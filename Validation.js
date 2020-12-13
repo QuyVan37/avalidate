@@ -16,19 +16,23 @@
             rules: [
                 chứa các rules cho các thẻ input:
                 Validator.isRequired( tham số 1, [tham số 2]) 
-                    //tham số 1: id or class thẻ input, tham số 2: message có thể có hoặc ko   
+                    //tham số 1: id thẻ input, tham số 2: message có thể có hoặc ko   
 
                 Validator.isEmail ( tham số 1, [tham số 2])   
-                    //tham số 1: id or class thẻ input, tham số 2: message có thể có hoặc ko   
+                    //tham số 1: id thẻ input, tham số 2: message có thể có hoặc ko   
 
                 Validator.minLength( tham số 1, tham số 2, [tham số 3]) 
-                    // tham só 1: id or class thẻ input, tham số 2: só kí tự tối thiểu, tham số 3: message có thể có hoặc ko
+                    // tham só 1: id thẻ input, tham số 2: só kí tự tối thiểu, tham số 3: message có thể có hoặc ko
 
                 Validator.isConfirmed( tham số 1, tham số 2, [tham số 3]) 
-                    // tham só 1: id or class thẻ input, tham số 2: id thẻ input , tham số 3: message có thể có hoặc ko
+                    // tham só 1: id thẻ input, tham số 2: id thẻ input , tham số 3: message có thể có hoặc ko
+            ],
+            onSubmit: function (data){
+                // dùng cho call API (data là dữ liệu form value được trả về)
+                // Ko bắt buộc phải dùng
+            } 
 
-                
-            ]
+            *** Trường hợp là checkbox, radito, thì tham số 1 = 'input[name= tên thẻ ]'
         })
 
 */ 
