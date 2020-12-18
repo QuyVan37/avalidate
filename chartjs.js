@@ -5,10 +5,10 @@
         if (xhr.readyState == 4 && xhr.status == 200) {
             var content = xhr.responseText;
             var data = JSON.parse(content);
-           
+
             if (data) {
-                console.log(countMo(data));
-                console.log(getQtyForAeachMaker(data));
+                console.log(getDieforeachMaker(data))
+                //console.log(getQtyForAeachMaker(data))
             } else {
                 alert("can not get data");
             }
@@ -16,11 +16,10 @@
     }
     xhr.send();
 
-
-    function countMo(dies) {
+    function count(dies) {
         var dem = 0;
-        for (die of dies) { // lap qua mang dung "of"
-            if (die.Process == 'Mo') {
+        for (var i = 1; i < dies.length; i++) {
+            if (dies[i].Process == 'Mo') {
                 dem++;
             }
         }
@@ -30,33 +29,33 @@
         }
     }
 
-    function getQtyForAeachMaker(dies) {
+    function getDieforeachMaker(dies) {
         var makers = [];
-        for (die of dies) { // lap qua mang dung "of"
-            if (makers.indexOf(die.Maker) == -1) {
-                makers.push(die.Maker);
+        for (var i = 1; i < dies.length; i++) {
+            if (makers.indexOf(dies[i].Maker) == -1) {
+                makers.push(dies[i].Maker);
             }
         }
-       var  makerQty = [];
-        for (maker of makers) {
-            var count = 0;
-            for (die of dies) {
-                if (die.Maker === maker) {
-                    count++;
+        var cal = [];
+
+        for (var i = 0; i < makers.length; i++) {
+
+            var dem = 0;
+            for (var j = 0; j < dies.length; j++) {
+                if (makers[i] === dies[j].Maker) {
+                    dem++
                 }
             }
-            makerQty.push({
-                maker: maker,
-                Qty : count
-            });
+            result = {
+                Maker: makers[i],
+                Qty: dem
+            }
+
+            cal.push(result)
         }
-        return makerQty.sort(function (a, b) {
-            return b.Qty - a.Qty;
-        })
+
+        return cal.sort(function (a, b) {
+            return (b.Qty - a.Qty);
+        });
     }
-    
-
-
-
 });
-
