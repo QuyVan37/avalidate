@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DMS</title>
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="Content/site.css">
+    <!-- jquery UI -->
+   <link rel="stylesheet" href="plugins/jquery-ui/jquery-ui.min.css">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand navbar-dark bg-basic">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/Dies" class="nav-link">Dies</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/Troubles" class="nav-link">Troubles</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/MRs" class="nav-link">MR Issue</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/Poes" class="nav-link">PO Dies</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/home/contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!--Chưa Đăng nhập-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="/login">
+                        <i class="far fa-user"></i> Login
+                    </a>
+                </li>
+
+                <!--Đã Đăng nhập-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-user"></i> <span> Hi, Nguyen Van Quy</span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <a href="/login/editprofile" class="dropdown-item">
+                            <i class="fas fa-user-edit"></i> Edit Profile
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/login/logout" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <div class="main-content">
+            <!-- Render nội dung vào đây-->
+            <div class="row" class="mt-5">
+                <div class="col-sm-12 col-md-11 m-auto">
+                    <div id="tabs" class="mt-5 bg-basic min-height-75vh">
+                        <ul>
+                            <li><a href="#x1newDie">X1 New Die</a></li>
+                            <li><a href="#x1additional">X1 Additional Die</a></li>
+                            <li><a href="#x4renwal">X4 Renewal Die</a></li>
+                            <li><a href="#x5ECN">X5 ECN </a></li>
+                            <li><a href="#x6modify">X6 Modify Die</a></li>
+                            <li><a href="#x7repair">X7 Repair Die</a></li>
+                            <li><a href="#others">Others</a></li>
+                        </ul>
+                        <div id="x1newDie" class="bg-basic">
+                           <div class="bg-basic text-basic">
+                               new die
+                           </div>
+                        </div>
+                        <div id="x1additional">
+                            x1additional
+                        </div>
+                        <div id="x4renwal">
+                            x4renwal
+                        </div>
+                        <div id="x5ECN">
+                            x5ECN
+                        </div>
+                        <div id="x6modify">
+                            x6modify
+                        </div>
+                        <div id="x7repair">
+                            x7repair
+                        </div>
+                        <div id="others">
+                            others
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <!-- Bootstrap 4 -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="plugins/chart.js/Chart.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="plugins/moment/moment.min.js"></script>
+</body>
+
+</html>
+
+<script>
+    $('#tabs').tabs()
+</script>

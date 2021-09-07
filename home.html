@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DMS</title>
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="Content/site.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand bg-basic navbar-dark">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/Dies" class="nav-link">Dies</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/Troubles" class="nav-link">Troubles</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/MRs" class="nav-link">MR Issue</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/Poes" class="nav-link">PO Dies</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/home/contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!--Chưa Đăng nhập-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="/login">
+                        <i class="far fa-user"></i> Login
+                    </a>
+                </li>
+
+                <!--Đã Đăng nhập-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-user"></i> <span> Hi, Nguyen Van Quy</span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <a href="/login/editprofile" class="dropdown-item">
+                            <i class="fas fa-user-edit"></i> Edit Profile
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/login/logout" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <div class="main-content container-fluid">
+            <!-- Render nội dung vào đây-->
+            <!--Gioi thieu die inform-->
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <div class="infor-box bg-basic">
+                        <span class="infor-box-icon bg-success"><i class="fas fa-cog"></i></span>
+                        <div class="info-box-content">
+                            <span class="infor-content-block infor-text">MP</span>
+                            <span class="infor-content-block infor-number">10,000
+                                <span class="infor-text-explain">Dies
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="infor-box bg-basic">
+                        <span class="infor-box-icon bg-success"><i class="fas fa-cog"></i></span>
+                        <div class="info-box-content">
+                            <span class="infor-content-block infor-text">MT</span>
+                            <span class="infor-content-block infor-number">10,000
+                                <span class="infor-text-explain">Dies
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="infor-box bg-basic">
+                        <span class="infor-box-icon bg-success"><i class="fas fa-cog"></i></span>
+                        <div class="info-box-content">
+                            <span class="infor-content-block infor-text">RN & AD</span>
+                            <span class="infor-content-block infor-number">10,000
+                                <span class="infor-text-explain">Dies
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="infor-box bg-basic">
+                        <span class="infor-box-icon bg-success"><i class="fas fa-cog"></i></span>
+                        <div class="info-box-content">
+                            <span class="infor-content-block infor-text">Over Warranty</span>
+                            <span class="infor-content-block infor-number">10,000
+                                <span class="infor-text-explain">Dies
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Chart die status-->
+            <div class="row">
+                <div class="col-sm-12 col-md-8">
+                    <div class="full-chart bg-basic">
+                        <div class="chart-header">
+                            <h4 class="chart-name">Die Quantity</h4>
+                            <div class="chart-options">
+                                <input type="text">
+                                <input type="text">
+                            </div>
+                        </div>
+
+                        <canvas id="barchart" style="display: block; width: 100%; height: 100%;" width="600" height="215"></canvas>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="full-chart bg-basic">
+                        <div class="chart-header">
+                            <span class="chart-name">Die Status</span>
+                            <div class="chart-options">
+                                <input type="text">
+                                <input type="text">
+                            </div>
+                        </div>
+                        <canvas id="doughnutChart" style="display: block; width: 100%; height: 100%;" width="145" height="105"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!--Project progeress MR-->
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="project-box">
+                        <div class="project-header bg-basic">
+                            <div class="project-name">
+                                MR
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <!--Box-->
+                            <div class="col-sm-6 col-md-3">
+                                <div class="project-infor-box bg-basic">
+                                    <span class="project-infor-box-icon bg-warning"><i class="far fa-file"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="infor-content-block infor-text">STD</span>
+                                        <span class="infor-content-block infor-number"> 15 <span
+                                                class="infor-text-explain">W-issue</span></span>
+                                        <span class="infor-content-block infor-number"> 20 <span
+                                                class="infor-text-explain">Rejected</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Box-->
+                            <div class="col-sm-6 col-md-3">
+                                <div class="project-infor-box bg-basic">
+                                    <span class="project-infor-box-icon bg-warning"><i
+                                            class="fas fa-file-signature"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="infor-content-block infor-text">PAE</span>
+                                        <span class="infor-content-block infor-number"> 15 <span
+                                                class="infor-text-explain">W-Check</span></span>
+                                        <span class="infor-content-block infor-number"> 20 <span
+                                                class="infor-text-explain">W-Approve</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Box-->
+                            <div class="col-sm-6 col-md-3">
+                                <div class="project-infor-box bg-basic">
+                                    <span class="project-infor-box-icon bg-warning">
+                                        <i class="fas fa-hand-holding-usd"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="infor-content-block infor-text">PLAN</span>
+                                        <span class="infor-content-block infor-number"> 15 <span
+                                                class="infor-text-explain">W-Check</span></span>
+                                        <span class="infor-content-block infor-number"> 20 <span
+                                                class="infor-text-explain">W-Approve</span></span>
+                                        <span class="infor-content-block infor-number"> 20 <span
+                                                class="infor-text-explain">W-Re-Update budget</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Box-->
+                            <div class="col-sm-6 col-md-3">
+                                <div class="project-infor-box bg-basic">
+                                    <span class="project-infor-box-icon bg-warning"><i class="fas fa-file-invoice-dollar"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="infor-content-block infor-text">PUR</span>
+                                        <span class="infor-content-block infor-number"> 15 <span
+                                                class="infor-text-explain">W-Check</span></span>
+                                        <span class="infor-content-block infor-number"> 20 <span
+                                                class="infor-text-explain">W-Approve</span></span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!--Chart RDC-->
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="full-chart bg-basic">
+                        <div class="chart-header">
+                            <h4 class="chart-name">RDC 5Years</h4>
+                            <div class="chart-options">
+                                <input type="text">
+                                <input type="text">
+                            </div>
+                        </div>
+
+                        <canvas id="rdc5year" style="display: block; width: 100%; height: 100%;" width="600" height="300"></canvas>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="full-chart bg-basic">
+                        <div class="chart-header">
+                            <span class="chart-name">RDC 2021</span>
+                            <div class="chart-options">
+                                <input type="text">
+                                <input type="text">
+                            </div>
+                        </div>
+                        <canvas id="2021" style="display: block; width: 100%; height: 100%;" width="600" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!--Chart trouble-->
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="full-chart bg-basic">
+                        <div class="chart-header">
+                            <h4 class="chart-name">Troubles Following</h4>
+                            <div class="chart-options">
+                                <input type="text">
+                                <input type="text">
+                            </div>
+                        </div>
+                        <canvas id="trouble-follow" style="display: block; width: 100%; height: 100%;" width="1000" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!--Chart RDC-->
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="full-chart bg-basic">
+                        <div class="chart-header">
+                            <h4 class="chart-name">Trouble type</h4>
+                            <div class="chart-options">
+                                <input type="text">
+                                <input type="text">
+                            </div>
+                        </div>
+
+                        <canvas id="troubleType" style="display: block; width: 100%; height: 100%;" width="600" height="300"></canvas>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="full-chart bg-basic">
+                        <div class="chart-header">
+                            <span class="chart-name">Responesibility</span>
+                            <div class="chart-options">
+                                <input type="text">
+                                <input type="text">
+                            </div>
+                        </div>
+                        <canvas id="Responesibility" style="display: block; width: 100%; height: 100%;" width="600" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.content-wrapper -->
+
+        <footer class="bg-basic">
+            <div class="footer-content text-center">
+                <p>Dies management system create and control by PAE_QV</p>
+                <p>Contact Quy_1908 or Hung_5754</p>
+            </div>
+        </footer>
+
+    </div>
+    <!-- ./wrapper -->
+
+   
+    
+
+
+
+
+
+
+
+   <!-- jQuery -->
+   <script src="plugins/jquery/jquery.min.js"></script>
+   <!-- jQuery UI 1.11.4 -->
+   <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+   <!-- Bootstrap 4 -->
+   <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <!-- ChartJS -->
+   <script src="plugins/chart.js/Chart.min.js"></script>
+   <!-- daterangepicker -->
+   <script src="plugins/moment/moment.min.js"></script>
+</body>
+
+</html>
+
+
+<script>
+    var ctx = document.getElementById("barchart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+<script>
+    var ctx = document.getElementById("doughnutChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ["Red", "Blue", "Yellow"],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+<script>
+    var ctx = document.getElementById("rdc5year").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["2017", "2018", "2019", "2020", "2021"],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 15, 21],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+<script>
+    var ctx = document.getElementById("2021").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["2017", "2018", "2019", "2020", "2021"],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 15, 21],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+<script>
+    var ctx = document.getElementById("trouble-follow").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["2017", "2018", "2019", "2020", "2021"],
+            datasets: [{
+                label: ['#1'],
+                data: [12, 19, 3, 15, 21],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+<script>
+    var ctx = document.getElementById("troubleType").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ["Red", "Blue", "Yellow"],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+<script>
+    var ctx = document.getElementById("Responesibility").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ["Red", "Blue", "Yellow"],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DMS</title>
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <!-- tdeme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="Content/site.css">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand navbar-dark bg-basic">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/Dies" class="nav-link">Dies</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/Troubles" class="nav-link">Troubles</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/MRs" class="nav-link">MR Issue</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/Poes" class="nav-link">PO Dies</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/home/contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!--Chưa Đăng nhập-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="/login">
+                        <i class="far fa-user"></i> Login
+                    </a>
+                </li>
+
+                <!--Đã Đăng nhập-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-user"></i> <span> Hi, Nguyen Van Quy</span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <a href="/login/editprofile" class="dropdown-item">
+                            <i class="fas fa-user-edit"></i> Edit Profile
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/login/logout" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <div class="main-content container-fluid">
+            <div class="row mt-5">
+                <div class="col-sm-12 col-md-12">
+                    <div class="project-box">
+                        <div class="project-header bg-basic">
+                            <div class="project-name">
+                                MR information
+                            </div>
+                            <div class="project-action">
+                                <input type="text" class="bg-basic">
+                                <button class=" btn-cs ml-1">Search</button>
+                                <a class=" btn-cs ml-1">Export</a>
+                                <button class="ml-1">Issue</button>
+                            </div>
+                        </div>
+                        <div class="project-content over-auto-scroll-x over-auto-scroll-y min-height-60vh max-height-60vh bg-basic">
+                            <table class="table table-sm table-bordered table-striped table-dark">
+                                <thead class="bg-warning">
+                                    <tr>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Tiêu Đề</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-basic">
+                                    <tr class="">
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                    </tr>
+                                    <tr class="bg-secondary">
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                        <td>AAAAAAA</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- /.content-wrapper -->
+
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <!-- Bootstrap 4 -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="plugins/chart.js/Chart.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="plugins/moment/moment.min.js"></script>
+</body>
+
+</html>
