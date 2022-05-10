@@ -12,9 +12,10 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <link rel="stylesheet" href="Content/site.css">
-    <link rel="stylesheet" href="./plugins/datatables/datatables.min.css">
+    <link rel="stylesheet" href="./DatatableFull/DataTablesFull/datatables.min.css">
+    <!-- <link rel="stylesheet" href="./plugins/datatables/datatables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.2/css/fixedHeader.dataTables.min.css">
-    <link rel="stylesheet" href="./plugins/datatables/keyTable.css">
+    <link rel="stylesheet" href="./plugins/datatables/keyTable.css"> -->
 
 </head>
 
@@ -74,10 +75,12 @@
         <!-- /.navbar -->
         <div class="main-content container-fluid">
             <!-- Render nội dung vào đây-->
-            <div class="row detail">
+            <div class="row detail mb-2">
                 <div class="col-md-1 col-sm-12 detail-title text-wrap text-center" style="font-size: 1.5rem;">
                     Die Lunching
+
                 </div>
+
                 <div class="col-md-3 col-sm-12 detail-box">
                     <div class="row">
                         <div class="detail-sum col-md-3 col-sm-12">
@@ -106,7 +109,7 @@
                     <form action="">
                         <div class="form-row mt-2">
                             <div class="col-md-4 input-placeholder">
-                                <input type="text" disabled="disabled" class="form-control form-control-sm" autofocus>
+                                <input type="text" class="form-control datepicker form-control-sm" autofocus>
                                 <label class="placeholder">Search</label>
                             </div>
                             <div class="col-md-2 input-placeholder">
@@ -188,187 +191,31 @@
                             <!-- //Neu PUC => Paymet, PUS => Price -->
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-success">Import Payment</button>
-                                <button type="submit"  class="btn btn-primary text-center">Search</button>
+                                <button type="submit" class="btn btn-primary text-center">Search</button>
                                 <button type="submit" class="btn btn-primary">Export</button>
                                 <button type="submit" class="btn btn-primary">All</button>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#showColumn">Show/Hide</button>
-                               
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#showColumn">Show/Hide</button>
+
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            <table class="text-center display border cell-border tableEditAble" id="myTableEditable" style="width:100%">
-                <thead class="bg-primary">
-                    <tr>
-                        <th class="text-nowrap">Col 1</th>
-                        <th class="text-nowrap">Col 2</th>
-                        <th class="text-nowrap">Col 3</th>
-                        <th class="text-nowrap">Col 4</th>
-                        <th class="text-nowrap">Col 5</th>
-                        <th class="text-nowrap">Col 6</th>
-                        <th class="text-nowrap">Col 7</th>
-                        <th class="text-nowrap">Col 1</th>
-                        <th class="text-nowrap">Col 2</th>
-                        <th class="text-nowrap">Col 3</th>
-                        <th class="text-nowrap">Col 4</th>
-                        <th class="text-nowrap">Col 5</th>
-                        <th class="text-nowrap">Col 6</th>
-                        <th class="text-nowrap">Col 7</th>
-                        <th class="text-nowrap">Col 1</th>
-                        <th class="text-nowrap">Col 2</th>
-                        <th class="text-nowrap">Col 3</th>
-                        <th class="text-nowrap">Col 4</th>
-                        <th class="text-nowrap">Col 5</th>
-                        <th class="text-nowrap">Col 6</th>
-                        <th class="text-nowrap">Col 7</th>
-                    </tr>
+            <table class="table text-center display border cell-border text-nowrap tableEditAble" id="myTableEditable"
+                style="width:100%">
+                <thead>
+
                 </thead>
-               <tbody>
-                    <tr id="1">
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row1" value="Row 1">
-                        </td>
-                        <td class="text-nowrap" isEditable="false">
-                            <input type="text" disabled="disabled" name="row2" value="Row 2">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row3" value="Row 3">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row4" value="Row 4">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row5" value="Row 5">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row6" value="Row 6">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row7" value="Row 7">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row1" value="Row 1">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row2" value="Row 2">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row3" value="Row 3">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row4" value="Row 4">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row5" value="Row 5">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row6" value="Row 6">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row7" value="Row 7">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row1" value="Row 1">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row2" value="Row 2">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row3" value="Row 3">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row4" value="Row 4">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row5" value="Row 5">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row6" value="Row 6">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row7" value="Row 7">
-                        </td>
-                    </tr>
-                    <tr id="2">
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row1" value="Row 1">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                           <select name="maker" disabled class="jsSelect2">
-                               <option></option>
-                               <option selected value="TABT">TABT</option>
-                               <option value="V123">V123</option>
-                               <option value="FGFG">FGFG</option>
-                               <option value="FAFA">FAFA</option>
-                               <option value="GFGF">GFGF</option>
-                           </select>
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row3" value="Row 3">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row4" value="Row 4">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row5" value="Row 5">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row6" value="Row 6">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row7" value="Row 7">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row1" value="Row 1">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row2" value="Row 2">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row3" value="Row 3">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row4" value="Row 4">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row5" value="Row 5">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row6" value="Row 6">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row7" value="Row 7">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row1" value="Row 1">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row2" value="Row 2">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row3" value="Row 3">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row4" value="Row 4">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row5" value="Row 5">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row6" value="Row 6">
-                        </td>
-                        <td class="text-nowrap" isEditable="true">
-                            <input type="text" disabled="disabled" name="row7" value="Row 7">
-                        </td>
-                    </tr>
-               </tbody>
+                <tbody>
+                </tbody>
+                <tfoot></tfoot>
             </table>
 
-            
             <!-- Modal -->
-            <div class="modal fade" id="showColumn" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
+            <div class="modal fade" id="showColumn" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Show / Hide Collum</h5>
@@ -376,8 +223,8 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body" id="renderAreasShowColumn"> 
-                           
+                        <div class="modal-body" id="renderAreasShowColumn">
+
                         </div>
                     </div>
                 </div>
@@ -385,15 +232,18 @@
 
         </div>
 
-       
+
 
         <!-- jQuery -->
         <script src="plugins/jquery/jquery.min.js"></script>
-        <!-- jQuery UI 1.11.4 -->
+        <!-- jQuery -->
         <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <!-- Bootstrap 4 -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
         <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+       
+
         <!-- ChartJS -->
         <script src="plugins/chart.js/Chart.min.js"></script>
         <!-- daterangepicker -->
@@ -401,25 +251,30 @@
 
         <!--Select2js plugin-->
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-            <script>
-                $(document).ready(function () {
-                    $('.jsSelect2').select2({
-                        width: '100%',
-                        theme: "classic"
-                    });
+        <script>
+            $(document).ready(function () {
+                $('.jsSelect2').select2({
+                    width: '100%',
+                    theme: "classic"
                 });
-            </script>
+
+                $(".datepicker").datepicker()
+            });
+        </script>
         <!--Datatable plugin-->
-        <script src="./plugins/datatables/datatables.min.js"></script>
+        <!-- <script src="./plugins/datatables/datatables.min.js"></script>
         <script src="https://cdn.datatables.net/fixedheader/3.2.2/js/dataTables.fixedHeader.min.js"></script>
-        <script src="./plugins/datatables/keyTable.js"></script>
-
-
-        <script src="./editable2.js"></script>
+        <script src="./plugins/datatables/keyTable.js"></script> -->
+        <script src="./DatatableFull/DataTablesFull/datatables.min.js"></script>
+        <script src="./renderTableContent.js"></script>
     </div>
-
-
+    <div style="" class="">
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="New Information">
+        <hr>
+        <textarea class="form-control" id="" rows="3"></textarea>
+    </div>
 
 </body>
 
