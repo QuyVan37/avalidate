@@ -1434,7 +1434,7 @@ TableEditor({
 
         TableEditor.isSelection({
             selectorClass: 'selectMaker',
-            className: 'jsSelect2',
+            className: 'jsSelect2 form-control',
             selectOptions: [
                 {
                     value: 1,
@@ -1456,7 +1456,7 @@ TableEditor({
         }),
         TableEditor.isSelection({
             selectorClass: 'selectYN',
-            className: 'jsSelect2',
+            className: 'jsSelect2 form-control',
             selectOptions: [
                 {
                     value: 0,
@@ -1470,7 +1470,7 @@ TableEditor({
         }),
         TableEditor.isSelection({
             selectorClass: 'selectModel',
-            className: 'jsSelect2',
+            className: 'jsSelect2 form-control',
             selectOptions: [
                 {
                     value: 1,
