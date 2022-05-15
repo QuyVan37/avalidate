@@ -1,0 +1,42 @@
+ public JsonResult SaveRecord(int recordID, string name, string newValue)
+        {
+            var status = false;
+            var record = db.Die_Launching_Control.Find(recordID);
+            var a = "";
+            try
+            {
+                PropertyInfo[] targetProps = record.GetType()
+               .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.SetProperty);
+
+
+                var targetProp = targetProps.FirstOrDefault(y => y.Name == name);
+                a = targetProp.ToString();
+                if (targetProp != null)
+                {
+                    targetProp.SetValue(record, newValue);
+                    status = true;
+                    db.Entry(record).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    status = true;
+                }
+               
+            }
+            catch
+            {
+                status = false;
+            }
+            
+            var data = new
+            {
+                status = status,
+                recordID = recordID,
+                name = name,
+                newValue = newValue,
+                a = a
+            };
+            
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
