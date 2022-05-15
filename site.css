@@ -42,7 +42,8 @@ body {
     box-shadow: 2px 2px 10px;
     white-space: nowrap;
 }
-.detail .btn{
+
+.detail .btn {
     font-size: 0.85rem
 }
 
@@ -58,10 +59,10 @@ body {
 .detail-box {
     display: block;
     background-color: #d1d1d1;
-    padding-top:8px ;
+    padding-top: 8px;
 }
 
-.detail-sum .btn{
+.detail-sum .btn {
     width: 100%;
     white-space: nowrap;
 }
@@ -73,7 +74,7 @@ body {
     border-radius: 5px;
     vertical-align: center;
     transition: transform 0.3s;
-    height: calc(2.25rem + 2px);
+    height: calc(1.8125rem + 2px);
     margin-bottom: 8px;
 }
 
@@ -92,7 +93,7 @@ body {
     flex: 1;
     display: block;
     text-align: center;
-   padding-top: 2px;
+    padding-top: 2px;
     font-size: 1.2rem;
 }
 
@@ -108,13 +109,13 @@ body {
     color: #303030;
     white-space: nowrap;
     text-align: center;
-   padding-top: 6px;
-   font-size: 0.85rem;
+    padding-top: 3px;
+    font-size: 0.85rem;
 }
 
-.detail-search{
+.detail-search {
     padding: 0px 10px;
-    display: flex;
+    display: block;
     color: #fff;
     background-color: #d1d1d1;
     padding-bottom: 10px;
@@ -124,11 +125,12 @@ body {
 .input-placeholder input {
     position: relative;
 }
+
 .input-placeholder .placeholder {
     z-index: 2;
     top: 5px;
     color: #cacaca;
-    position:absolute;
+    position: absolute;
     top: 5px;
     left: 20px;
     pointer-events: none;
@@ -136,9 +138,9 @@ body {
     transition: transform 300ms, color 200ms;
 }
 
-.input-placeholder input:focus ~ .placeholder,
-.input:not(:placeholder-shown) ~ .placeholder {
-  transform: translateY(-15px) translateX(3px) scale(0.75);
+.input-placeholder input:focus~.placeholder,
+.input:not(:placeholder-shown)~.placeholder {
+    transform: translateY(-15px) translateX(3px) scale(0.75);
     background-color: #d1d1d1;
     display: block;
     width: 80px;
@@ -146,14 +148,14 @@ body {
     text-align: center;
     border-radius: 10px;
     color: rgb(107, 107, 107);
-    padding-bottom:3px ;
-    border-bottom:1px solid #0077ff ;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #0077ff;
     z-index: 2;
 }
 
-.input-placeholder select:optional ~ .placeholder,
-.input:not(:placeholder-shown) ~ .placeholder {
-  transform: translateY(-15px) translateX(3px) scale(0.75);
+.input-placeholder select:optional~.placeholder,
+.input:not(:placeholder-shown)~.placeholder {
+    transform: translateY(-15px) translateX(3px) scale(0.75);
     background-color: #d1d1d1;
     display: block;
     width: 80px;
@@ -161,7 +163,58 @@ body {
     text-align: center;
     border-radius: 10px;
     color: rgb(107, 107, 107);
-    padding-bottom:3px ;
-    border-bottom:1px solid #0077ff ;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #0077ff;
     z-index: 2;
 }
+
+/* new CSS*/
+table.dataTable td.focus {
+    outline: 1px solid #ac1212;
+    outline-offset: -3px;
+    background-color: #f8e6e6 !important;
+    box-shadow: none !important;
+}
+
+table tbody tr td input {
+    /* background-color: transparent;
+    outline: none;
+    border: none; */
+    text-align: center;
+    width: auto;
+}
+table tbody tr td {
+    padding: 0px;
+}
+
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid blue;
+    border-bottom: 16px solid blue;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  div.dt-button-collection.columns>:last-child .dt-button{
+      min-width: 195px !important;
+  }
+
+  div.dt-button-collection button.dt-button:active:not(.disabled), div.dt-button-collection button.dt-button.active:not(.disabled), div.dt-button-collection div.dt-button:active:not(.disabled), div.dt-button-collection div.dt-button.active:not(.disabled), div.dt-button-collection a.dt-button:active:not(.disabled), div.dt-button-collection a.dt-button.active:not(.disabled){
+    background: linear-gradient(to bottom, #acfff1 0%, #1bffd9 100%) !important;
+
+  }
+  
