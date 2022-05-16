@@ -217,7 +217,6 @@ var table = $('#myTableEditable').DataTable({
             data: "RecordID", title: "RecordID",
             render: function (data, type, row, meta) {
                 if (type === 'display' || type === 'filter') {
-
                     return '<input name="recordID" type="checkbox" value ="' + data + '"/>'
                 }
                 return data
@@ -232,8 +231,8 @@ var table = $('#myTableEditable').DataTable({
         { data: "Die_No", title: "Die_No" },
         { data: "Die_ID", title: "Die_ID" },
         { data: "Model_Name", title: "Model_Name" },
-        { data: "Supplier_Code", title: "Supplier_Code" },
-        { data: "Supplier_Name", title: "Supplier_Name" },
+        { data: "Supplier", title: "Supplier_Code" },
+        { data: "Supplier", title: "Supplier_Name" },
         {
             data: "Progress", title: "Progress",
             render: function (data, type, row, meta) {
@@ -518,14 +517,14 @@ var table = $('#myTableEditable').DataTable({
                 return data
             }
         },
-        { data: "Die_Price", title: "Die_Price" },
-        { data: "Curency", title: "Curency" },
+        { data: "Jig_Using", title: "Die_Price" },
+        { data: "Jig_Using", title: "Curency" },
         { data: "Jig_Using", title: "Jig_Using" },
         { data: "Jig_No", title: "Jig_No" },
-        { data: "Jig_Col_2", title: "Jig_Col_2" },
-        { data: "Jig_Col_3", title: "Jig_Col_3" },
-        { data: "Jig_Col_4", title: "Jig_Col_4" },
-        { data: "Jig_Col_5", title: "Jig_Col_5" },
+        { data: "Jig_No", title: "Jig_Col_2" },
+        { data: "Jig_No", title: "Jig_Col_3" },
+        { data: "Jig_No", title: "Jig_Col_4" },
+        { data: "Jig_No", title: "Jig_Col_5" },
         {
             data: "T0_Plan", title: "T0_Plan",
             render: function (data, type, row, meta) {
@@ -845,10 +844,7 @@ table.columns.adjust();
 
 
 start()
-// Khi close modal thi chay doan ma
-$('#showColumn').on('hidden.bs.modal', function (e) {
-    getAllColIndexNeedShowAndHandelView()
-})
+
 
 function start() {
 
@@ -900,7 +896,7 @@ function getDatafromAPI2(callback) {
 function renderDataRows() {
     onLoading()
     getDatafromAPI2(function (data) {
-
+        table.clear().draw()
         table.rows.add(data).draw()
         onLoaded()
         $($.fn.dataTable.tables(true)).DataTable()
@@ -1268,6 +1264,7 @@ function TableEditor(options) {
             //2. Nếu có Editable và có thẻ input thì đóng thẻ input => lấy new data ở thẻ input vào cell
             //3. nếu new data khác old data thì gửi lên server để luu lại
             var cellElement = cell.node()
+
             var isEditable = $(cellElement).hasClass('editable')
             var isInputElement = $(cellElement).has('input[id=jsCellFocus]').length
             var isSelectElement = $(cellElement).has('select[id=jsCellFocus]').length
@@ -1326,7 +1323,7 @@ function getNewData(tdElement) {
         'outline': 'none'
     })
     var data = {
-        recordID: recordID,
+        recordID: parseInt(recordID),
         name: name,
         newValue: newValue,
         newValueShow: newValueShow
@@ -1337,7 +1334,32 @@ function getNewData(tdElement) {
 function updateData(data) {
 
     console.log('Update data', data)
+    $.ajax({
+        url: "http://localhost:8080/Die_Launching_Control/saveRecord",
+        type: 'post',
+        dataType: 'json',
+        data: data,
+        success: function (data) {
+            console.log(data)
+        }
+    })
 }
+
+function getDataSelectOption(url) {
+    return new Promise(resolve => {
+        $.ajax({
+            url: url,
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                resolve(data);
+            }
+        })
+    });
+}
+
+
+
 
 
 TableEditor.isInput = function (config) {
@@ -1375,23 +1397,48 @@ TableEditor.isSelection = function (config) {
             var value = cellElement.textContent.trim()
             var className = config.className ? config.className : "";
             var contentSelect = ''
-            config.selectOptions.forEach(option => {
-                var isSelected = option.show == value ? "selected" : ""
-                contentSelect += `<option value="${option.value}" ${isSelected}>${option.show}</option>`
-            })
-            $(cellElement).html(`
+            if (config.selectOptions) {
+                config.selectOptions.forEach(option => {
+                    var isSelected = option.show == value ? "selected" : ""
+                    contentSelect += `<option value="${option.value}" ${isSelected}>${option.show}</option>`
+                })
+                renderHtml(contentSelect)
+            } else {
+                if (config.selectOptionsByAjax) {
+                    contentSelect = createSelectElement(config.selectOptionsByAjax, value)
+                }
+            }
+
+            async function createSelectElement(url, currentValue) {
+                const selectOptions = await getDataSelectOption(url);
+                var contentSelect;
+                selectOptions.forEach(option => {
+                    var isSelected = option.show == currentValue ? "selected" : ""
+                    contentSelect += `<option value="${option.value}" ${isSelected}>${option.show}</option>`
+                })
+
+                renderHtml(contentSelect)
+                select2()
+            }
+
+            function renderHtml(contentSelect) {
+                $(cellElement).html(`
                 <select name ="${name}" class="${className}" id="jsCellFocus">
                     <option>...</option>
                     ${contentSelect}
                 </select>
-            `)
-                .css({
-                    'padding': 0,
-                    'outline': '1px solid #ac1212',
-                    'outline-offset': '-3px',
-                    'background-color': '#f8e6e6 !important',
-                    'box-shadow': 'none'
-                })
+                `)
+                    .css({
+                        'padding': 0,
+                        'outline': '1px solid #ac1212',
+                        'outline-offset': '-3px',
+                        'background-color': '#f8e6e6 !important',
+                        'box-shadow': 'none'
+                    })
+
+               
+            }
+
         }
     }
 }
@@ -1435,24 +1482,7 @@ TableEditor({
         TableEditor.isSelection({
             selectorClass: 'selectMaker',
             className: 'jsSelect2 form-control',
-            selectOptions: [
-                {
-                    value: 1,
-                    show: 'V008FFFFFFFFFFFFFFFFF'
-                },
-                {
-                    value: 2,
-                    show: 'TABT'
-                },
-                {
-                    value: 3,
-                    show: 'N278FFFFFFFFFFFFFFFFF'
-                },
-                {
-                    value: 4,
-                    show: 'SACQFFFFFFFFFFFFFFFFF'
-                },
-            ]
+            selectOptionsByAjax: 'http://localhost:8080/Die_Launching_Control/getMakers'
         }),
         TableEditor.isSelection({
             selectorClass: 'selectYN',
@@ -1471,16 +1501,7 @@ TableEditor({
         TableEditor.isSelection({
             selectorClass: 'selectModel',
             className: 'jsSelect2 form-control',
-            selectOptions: [
-                {
-                    value: 1,
-                    show: 'L1197'
-                },
-                {
-                    value: 2,
-                    show: 'L1235'
-                },
-            ]
+            selectOptionsByAjax: 'http://localhost:8080/Die_Launching_Control/getMakers'
         }),
         TableEditor.isArea({
             selectorClass: 'inputGenaralInfor',
@@ -1506,76 +1527,14 @@ TableEditor({
 
 
 
-// table
-//     .on('key', function (e, datatable, key, cell, originalEvent) {
-//         //1. neu key = 13 (enter) => Move down
-//         if (key == 13) {
-//             table.keys.move('down');
-//         }
-
-//     })
-//     .on('key-focus', function (e, datatable, cell) {
-//         //1. Kiem tra co the select ko? & co thuoc tinh editable = true ko?
-//         var cellElement = cell.node();
-//         isSelect = $(cell.node()).find('select').length
-//         isInput = $(cell.node()).find('input[name]').length
-//         isEditableCell = $(cellElement).attr('isEditable').trim().toLowerCase() == "true"
 
 
-//         //1.1 Neu co the select va isEditable= true
-//         if (isSelect && isEditableCell) {
-//             oldValue = $(cellElement).find('select option:selected').val().trim();
-//             $(cell.node()).find('select').prop('disabled', false);
-//         }
-
-//         //1.2 Neu co the input
-//         if (isInput && isEditableCell) {
-//             var inputElement = $(cellElement).find('input[name]').prop('disabled', false);
-//             oldValue = inputElement.val().trim();
-//             //select va focus vao the input
-//             inputElement.select().focus()
-//         }
-
-//     })
-//     .on('key-blur', function (e, datatable, cell) {
-//         //1. Kien tra Value co bi thay doi ko?
-//         // Neu co => Update lai du lieu
-//         //1.1 Neu co the select va isEditable= true
-//         var cellElement = $(cell.node())
-//         var recordID = $(cell.node()).parent().attr('id') // <td name = ...>
-
-//         if (isSelect && isEditableCell) {
-//             newValue = $(cellElement).find('select option:selected').val().trim();
-//             var name = $(cellElement).find('select').attr('name')
-//             if (newValue != oldValue) {
-//                 updateData(
-//                     {
-//                         recordID: recordID,
-//                         name: name,
-//                         value: newValue
-//                     }
-//                 )
-//             }
-//         }
-
-//         //1.2 Neu co the input
-//         if (isInput && isEditableCell) {
-//             var inputElement = $(cell.node()).find('input[name]')
-//             var name = $(inputElement).attr('name')
-//             $(inputElement).blur()
-//             $(inputElement).prop('disabled', true);
-
-
-//             newValue = $(cellElement).find('input[name]').val().trim();
-//             if (newValue != oldValue) {
-//                 updateData(
-//                     {
-//                         recordID: recordID,
-//                         name: name,
-//                         value: newValue
-//                     }
-//                 )
-//             }
-//         }
-//     })
-
+function select2() {
+    $('.jsSelect2').select2({
+        width: '100%',
+        theme: "classic"
+    });
+}
+$(document).ready(function() {
+    select2();
+  });
