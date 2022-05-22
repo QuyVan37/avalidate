@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <link rel="stylesheet" href="Content/site.css">
     <link rel="stylesheet" href="./DatatableFull/DataTablesFull/datatables.min.css">
-    <!-- <link rel="stylesheet" href="./plugins/datatables/datatables.min.css">
+    <!-- <link rel="stylesheet" href="./plugins/dat
+        atables/datatables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.2.2/css/fixedHeader.dataTables.min.css">
     <link rel="stylesheet" href="./plugins/datatables/keyTable.css"> -->
 
@@ -106,72 +107,31 @@
                     </div>
                 </div>
                 <div class="col-md-8 col-sm-12 detail-search">
-                    <form action="">
+                    <form id="form_search">
                         <div class="form-row mt-2">
-                            <div class="col-md-4 input-placeholder">
-                                <input type="text" class="form-control datepicker form-control-sm" autofocus>
+                            <div class="col-md-3 input-placeholder">
+                                <input type="text" id="search" name="search" class="form-control form-control-sm">
                                 <label class="placeholder">Search</label>
                             </div>
                             <div class="col-md-2 input-placeholder">
-                                <select class="form-control form-control-sm jsSelect2">
-                                    <option></option>
+                                <select name="following" id="following" class="form-control form-control-sm jsSelect2">
+                                    <option value="1">Following</option>
+                                    <option value="0">Closed</option>
+                                    <option value="-1">All</option>
+                                </select>
+                                <label class="placeholder">Following</label>
+                            </div>
+                            <div class="col-md-3 input-placeholder">
+                                <select name="Category" id="category" class="form-control form-control-sm jsSelect2" multiple = "multiple">
                                     <option>MT</option>
-                                    <option>Renew & Additional</option>
+                                    <option>Additional</option>
+                                    <option>Renewal</option>
+                                    <option>Overhaul</option>
                                 </select>
-                                <label class="placeholder">Field</label>
+                                <label class="placeholder">Category</label>
                             </div>
-                            <div class="col-md-2 input-placeholder">
-                                <select class="form-control form-control-sm jsSelect2">
-                                    <option></option>
-                                    <option>L1197/98</option>
-                                    <option>L1174</option>
-                                    <option>T527</option>
-                                </select>
-                                <label class="placeholder">Model</label>
-                            </div>
-                            <div class="col-md-2 input-placeholder">
-                                <select class="form-control form-control-sm jsSelect2">
-                                    <option></option>
-                                    <option>TABT</option>
-                                    <option>V008</option>
-                                    <option>N547</option>
-                                </select>
-                                <label class="placeholder">Supplier</label>
-                            </div>
-
-                            <div class="col-md-2 input-placeholder">
-                                <select class="form-control form-control-sm jsSelect2">
-                                    <option></option>
-                                    <option>Quy</option>
-                                    <option>Hai</option>
-                                    <option>Hung</option>
-                                </select>
-                                <label class="placeholder">PIC</label>
-                            </div>
-                        </div>
-                        <div class="form-row mt-2">
-                            <div class="col-md-2 input-placeholder">
-                                <input type="text" disabled="disabled" class="form-control form-control-sm  datepicker">
-                                <label class="placeholder">From</label>
-                            </div>
-                            <div class="col-md-2 input-placeholder">
-                                <input type="text" disabled="disabled" class="form-control form-control-sm  datepicker">
-                                <label class="placeholder">To</label>
-                            </div>
-                            <div class="col-md-2 input-placeholder">
-                                <select class="form-control form-control-sm jsSelect2">
-                                    <option></option>
-                                    <option>W-MR</option>
-                                    <option>W-PO</option>
-                                    <option>W-T0</option>
-                                    <option>W-PreKK</option>
-                                    <option>W-FA</option>
-                                    <option>Done</option>
-                                </select>
-                                <label class="placeholder">Status</label>
-                            </div>
-                            <div class="col-md-2 input-placeholder">
-                                <select class="form-control form-control-sm jsSelect2">
+                            <div class="col-md-4 input-placeholder">
+                                <select name="FAresult" id="FAresult" class="form-control form-control-sm jsSelect2 " multiple = "multiple">
                                     <option></option>
                                     <option>OK</option>
                                     <option>RS</option>
@@ -186,17 +146,45 @@
                                 <label class="placeholder">FA Result</label>
                             </div>
 
+                           
+                        </div>
+                        <div class="form-row mt-2">
+                            
+                            <div class="col-md-2 input-placeholder">
+                                <input type="text" id="from" class="form-control form-control-sm  datepicker">
+                                <label class="placeholder">From</label>
+                            </div>
+                            <div class="col-md-2 input-placeholder">
+                                <input type="text" id="to" class="form-control form-control-sm  datepicker">
+                                <label class="placeholder">To</label>
+                            </div>
+                            <div class="col-md-4 input-placeholder">
+                                <select name="model" id="model" class="form-control form-control-sm jsSelect2" multiple = "multiple">
+                                    <option></option>
+                                    <option value="1">L1197</option>
+                                    <option value="2">L1221</option>
+                                    <option value="3">T546</option>
+                                    <option value="4">L1199/20</option>
+                                    <option value="5">L1137/38</option>
+                                    <option value="6">L1112/13</option>
+                                </select>
+                                <label class="placeholder">Model</label>
+                            </div>
+                            <div class="col-md-4 input-placeholder">
+                                <select name="supplier" id="supplier" class="form-control form-control-sm jsSelect2", multiple = "multiple">
+                                    <option></option>
+                                    <option value="1">TABT</option>
+                                    <option value="2">V008</option>
+                                    <option value="3">N547</option>
+                                </select>
+                                <label class="placeholder">Supplier</label>
+                            </div>
                         </div>
                         <div class="form-row mt-2">
                             <!-- //Neu PUC => Paymet, PUS => Price -->
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-success">Import Payment</button>
-                                <button type="submit" class="btn btn-primary text-center">Search</button>
-                                <button type="submit" class="btn btn-primary">Export</button>
-                                <button type="submit" class="btn btn-primary">All</button>
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#showColumn">Show/Hide</button>
-
+                                <span id="btn_search" class="btn btn-primary text-center">Search</span>
+                                <span id="showall" class="btn btn-primary">ShowAll</span>
                             </div>
                         </div>
                     </form>
@@ -253,6 +241,13 @@
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+       
+        <!--Datatable plugin-->
+        <!-- <script src="./plugins/datatables/datatables.min.js"></script>
+        <script src="https://cdn.datatables.net/fixedheader/3.2.2/js/dataTables.fixedHeader.min.js"></script>
+        <script src="./plugins/datatables/keyTable.js"></script> -->
+        <script src="./DatatableFull/DataTablesFull/datatables.min.js"></script>
+        <script src="./renderTableContent.js"></script>
         <script>
             $(document).ready(function () {
                 $('.jsSelect2').select2({
@@ -263,18 +258,8 @@
                 $(".datepicker").datepicker()
             });
         </script>
-        <!--Datatable plugin-->
-        <!-- <script src="./plugins/datatables/datatables.min.js"></script>
-        <script src="https://cdn.datatables.net/fixedheader/3.2.2/js/dataTables.fixedHeader.min.js"></script>
-        <script src="./plugins/datatables/keyTable.js"></script> -->
-        <script src="./DatatableFull/DataTablesFull/datatables.min.js"></script>
-        <script src="./renderTableContent.js"></script>
     </div>
-    <div style="" class="">
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="New Information">
-        <hr>
-        <textarea class="form-control" id="" rows="3"></textarea>
-    </div>
+   
 
 </body>
 

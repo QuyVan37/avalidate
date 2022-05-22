@@ -4,123 +4,126 @@
 // 1. Hay config lai headerConfig neu them cot => sau do config lai "columns" trong table
 // 2. Thay doi lai url ajax
 var headerConfig = [
-    { col_index: 0, title: "RecordID", process: "Basic_Info", editable: false },
-    { col_index: 1, title: "Phase", process: "Basic_Info", editable: true },
-    { col_index: 2, title: "Step", process: "Basic_Info", editable: true },
-    { col_index: 3, title: "Rank", process: "Basic_Info", editable: true },
-    { col_index: 4, title: "Part_No", process: "Basic_Info", editable: true },
-    { col_index: 5, title: "Part_Name", process: "Basic_Info", editable: true },
-    { col_index: 6, title: "Process_Code", process: "Basic_Info", editable: true },
-    { col_index: 7, title: "Die_No", process: "Basic_Info", editable: true },
-    { col_index: 8, title: "Die_ID", process: "Basic_Info", editable: false },
-    { col_index: 9, title: "Model_Name", process: "Basic_Info", editable: true },
-    { col_index: 10, title: "Supplier_Code", process: "Basic_Info", editable: true },
-    { col_index: 11, title: "Supplier_Name", process: "Basic_Info", editable: false },
-    { col_index: 12, title: "Progress", process: "Genaral_Progress", editable: false },
-    { col_index: 13, title: "Status", process: "Genaral_Progress", editable: false },
-    { col_index: 14, title: "Pending_Status", process: "Genaral_Progress", editable: false },
-    { col_index: 15, title: "Dept_Response", process: "Genaral_Progress", editable: false },
-    { col_index: 16, title: "Warning", process: "Genaral_Progress", editable: false },
-    { col_index: 17, title: "Genaral_Information", process: "Genaral_Progress", editable: true },
-    { col_index: 18, title: "Decision_Date", process: "Decision", editable: true },
-    { col_index: 19, title: "Select_Supplier_Date", process: "Decision", editable: true },
-    { col_index: 20, title: "Target_OK_Date", process: "Decision", editable: true },
-    { col_index: 21, title: "Inv_Idea", process: "DE_Inv", editable: true },
-    { col_index: 22, title: "Inv_Feedback_To", process: "DE_Inv", editable: true },
-    { col_index: 23, title: "Inv_Result", process: "DE_Inv", editable: true },
-    { col_index: 24, title: "Inv_Cost_Down", process: "DE_Inv", editable: true },
-    { col_index: 25, title: "DSUM_Date", process: "DSUM", editable: true },
-    { col_index: 26, title: "DSUM_PE1_Check_Date", process: "DSUM", editable: true },
-    { col_index: 27, title: "DSUM_PAE_App_Date", process: "DSUM", editable: true },
-    { col_index: 28, title: "Core_Cav_Mat", process: "DSUM", editable: true },
-    { col_index: 29, title: "Slider_Mat", process: "DSUM", editable: true },
-    { col_index: 30, title: "Lifter_Mat", process: "DSUM", editable: true },
-    { col_index: 31, title: "Texture", process: "DSUM", editable: true },
-    { col_index: 32, title: "Hot_Runner", process: "DSUM", editable: true },
-    { col_index: 33, title: "Gate", process: "DSUM", editable: true },
-    { col_index: 34, title: "MC_Size", process: "DSUM", editable: true },
-    { col_index: 35, title: "Die_Make_Location", process: "DSUM", editable: true },
-    { col_index: 36, title: "Die_Maker", process: "DSUM", editable: true },
-    { col_index: 37, title: "Family_Die_With", process: "DSUM", editable: true },
-    { col_index: 38, title: "Common_Part_With", process: "DSUM", editable: true },
-    { col_index: 39, title: "Special_Die", process: "DSUM", editable: true },
-    { col_index: 40, title: "DSUM_Idea", process: "DSUM", editable: true },
-    { col_index: 41, title: "DSUM_Idea_Cost_Down", process: "DSUM", editable: true },
-    { col_index: 42, title: "MR_Request_Date", process: "MR_PO", editable: false },
-    { col_index: 43, title: "MR_App_Date", process: "MR_PO", editable: false },
-    { col_index: 44, title: "PO_Issue_Date", process: "MR_PO", editable: false },
-    { col_index: 45, title: "PO_App_Date", process: "MR_PO", editable: false },
-    { col_index: 46, title: "Die_Price", process: "MR_PO", editable: false },
-    { col_index: 47, title: "Curency", process: "MR_PO", editable: false },
-    { col_index: 48, title: "Jig_Using", process: "JIG", editable: true },
-    { col_index: 49, title: "Jig_No", process: "JIG", editable: true },
-    { col_index: 50, title: "Jig_Col_2", process: "JIG", editable: true },
-    { col_index: 51, title: "Jig_Col_3", process: "JIG", editable: true },
-    { col_index: 52, title: "Jig_Col_4", process: "JIG", editable: true },
-    { col_index: 53, title: "Jig_Col_5", process: "JIG", editable: true },
-    { col_index: 54, title: "T0_Plan", process: "T0", editable: true },
-    { col_index: 55, title: "T0_Actual", process: "T0", editable: true },
-    { col_index: 56, title: "T0_Try_Result", process: "T0", editable: true },
-    { col_index: 57, title: "T0_Solving_Method", process: "T0", editable: true },
-    { col_index: 58, title: "T0_Solving_Result", process: "T0", editable: true },
-    { col_index: 59, title: "Tn_Try_Time", process: "T(n)", editable: true },
-    { col_index: 60, title: "Tn_Plan", process: "T(n)", editable: true },
-    { col_index: 61, title: "Tn_Actual", process: "T(n)", editable: true },
-    { col_index: 62, title: "Tn_Try_Result", process: "T(n)", editable: true },
-    { col_index: 63, title: "Tn_Solving_Method", process: "T(n)", editable: true },
-    { col_index: 64, title: "Tn_Solving_Result", process: "T(n)", editable: true },
-    { col_index: 65, title: "Texture_Meeting_Date", process: "Texture_S0", editable: true },
-    { col_index: 66, title: "Texture_Go_Date", process: "Texture_S0", editable: true },
-    { col_index: 67, title: "S0_Plan", process: "Texture_S0", editable: true },
-    { col_index: 68, title: "S0_Actual", process: "Texture_S0", editable: true },
-    { col_index: 69, title: "S0_Result", process: "Texture_S0", editable: true },
-    { col_index: 70, title: "S0_Solving_Method", process: "Texture_S0", editable: true },
-    { col_index: 71, title: "S0_Solving_Result", process: "Texture_S0", editable: true },
-    { col_index: 72, title: "Sn_Try_Time", process: "Texture_S(n)", editable: true },
-    { col_index: 73, title: "Sn_Plan", process: "Texture_S(n)", editable: true },
-    { col_index: 74, title: "Sn_Actual", process: "Texture_S(n)", editable: true },
-    { col_index: 75, title: "Sn_Result", process: "Texture_S(n)", editable: true },
-    { col_index: 76, title: "Sn_Solving_Method", process: "Texture_S(n)", editable: true },
-    { col_index: 77, title: "Sn_Solving_Result", process: "Texture_S(n)", editable: true },
-    { col_index: 78, title: "Texture_App_Date", process: "Texture_Approve", editable: true },
-    { col_index: 79, title: "Texture_Internal_App_Result", process: "Texture_Approve", editable: true },
-    { col_index: 80, title: "Texture_JP_HP_App_Result", process: "Texture_Approve", editable: true },
-    { col_index: 81, title: "Texture_App_Remark", process: "Texture_Approve", editable: true },
-    { col_index: 82, title: "FA_Sub_Time", process: "FA_Status", editable: true },
-    { col_index: 83, title: "FA_Plan", process: "FA_Status", editable: true },
-    { col_index: 84, title: "FA_Actual", process: "FA_Status", editable: true },
-    { col_index: 85, title: "FA_Result", process: "FA_Status", editable: true },
-    { col_index: 86, title: "FA_Genaral_Inform", process: "FA_Status", editable: true },
-    { col_index: 87, title: "FA_Problem", process: "FA_Status", editable: true },
-    { col_index: 88, title: "Action_Improve", process: "FA_Status", editable: true },
-    { col_index: 89, title: "MT1_Date", process: "MT1", editable: true },
-    { col_index: 90, title: "MT1_Gather_Date", process: "MT1", editable: true },
-    { col_index: 91, title: "MT1_Problem", process: "MT1", editable: true },
-    { col_index: 92, title: "MT1_Solve_Method", process: "MT1", editable: true },
-    { col_index: 93, title: "MT1_Solve_Result", process: "MT1", editable: true },
-    { col_index: 94, title: "MT1_Remark", process: "MT1", editable: true },
-    { col_index: 95, title: "MTF_Date", process: "MTF", editable: true },
-    { col_index: 96, title: "MTF_Gether_Date", process: "MTF", editable: true },
-    { col_index: 97, title: "MTF_Problem", process: "MTF", editable: true },
-    { col_index: 98, title: "MTF_Solve_Method", process: "MTF", editable: true },
-    { col_index: 99, title: "MTF_Solve_Result", process: "MTF", editable: true },
-    { col_index: 100, title: "MTF_Remark", process: "MTF", editable: true },
-    { col_index: 101, title: "TVP_Date", process: "TVP", editable: true },
-    { col_index: 102, title: "TVP_No", process: "TVP", editable: true },
-    { col_index: 103, title: "TVP_Result", process: "TVP", editable: true },
-    { col_index: 104, title: "TVP_Remark", process: "TVP", editable: true },
-    { col_index: 105, title: "First_Lost_Date", process: "First_Lot", editable: true },
-    { col_index: 106, title: "First_Lost_Remark", process: "First_Lot", editable: true },
-    { col_index: 107, title: "PAE_PIC", process: "PIC", editable: true },
-    { col_index: 108, title: "PE1_PIC", process: "PIC", editable: true },
-    { col_index: 109, title: "MQA_PIC", process: "PIC", editable: true },
-    { col_index: 110, title: "PUR_PIC", process: "PIC", editable: true },
-    { col_index: 111, title: "PDC_PIC", process: "PIC", editable: true },
-    { col_index: 112, title: "Latest_Update", process: "History", editable: false },
-    { col_index: 113, title: "Latest_Update_By", process: "History", editable: false },
-    { col_index: 114, title: "His_Update", process: "History", editable: false },
-    { col_index: 115, title: "Issue_Date", process: "History", editable: false },
-    { col_index: 116, title: "Issue_By", process: "History", editable: false },
+    { Col_Index: 0, title: 'RecordID', process: 'Basic_Info', editable: false },
+    { Col_Index: 1, title: 'Category', process: 'Basic_Info', editable: false },
+    { Col_Index: 2, title: 'Step', process: 'Basic_Info', editable: true },
+    { Col_Index: 3, title: 'Rank', process: 'Basic_Info', editable: true },
+    { Col_Index: 4, title: 'Part_No', process: 'Basic_Info', editable: true },
+    { Col_Index: 5, title: 'Part_Name', process: 'Basic_Info', editable: true },
+    { Col_Index: 6, title: 'Process_Code', process: 'Basic_Info', editable: true },
+    { Col_Index: 7, title: 'Die_No', process: 'Basic_Info', editable: true },
+    { Col_Index: 8, title: 'Die_ID', process: 'Basic_Info', editable: false },
+    { Col_Index: 9, title: 'Model_Name', process: 'Basic_Info', editable: true },
+    { Col_Index: 10, title: 'Supplier', process: 'Basic_Info', editable: true },
+    { Col_Index: 11, title: 'Progress', process: 'Genaral_Progress', editable: false },
+    { Col_Index: 12, title: 'Status', process: 'Genaral_Progress', editable: false },
+    { Col_Index: 13, title: 'Pending_Status', process: 'Genaral_Progress', editable: false },
+    { Col_Index: 14, title: 'Dept_Response', process: 'Genaral_Progress', editable: false },
+    { Col_Index: 15, title: 'Warning', process: 'Genaral_Progress', editable: false },
+    { Col_Index: 16, title: 'Genaral_Information', process: 'Genaral_Progress', editable: false },
+    { Col_Index: 17, title: 'Decision_Date', process: 'Decision', editable: true },
+    { Col_Index: 18, title: 'Select_Supplier_Date', process: 'Decision', editable: true },
+    { Col_Index: 19, title: 'QTN_Sub_Date', process: 'Decision', editable: true },
+    { Col_Index: 20, title: 'QTN_App_Date', process: 'Decision', editable: true },
+    { Col_Index: 21, title: 'Need_Using_Date', process: 'Decision', editable: true },
+    { Col_Index: 22, title: 'Target_OK_Date', process: 'Decision', editable: true },
+    { Col_Index: 23, title: 'Inv_Idea', process: 'DE_Inv', editable: true },
+    { Col_Index: 24, title: 'Inv_Feedback_To', process: 'DE_Inv', editable: true },
+    { Col_Index: 25, title: 'Inv_Result', process: 'DE_Inv', editable: true },
+    { Col_Index: 26, title: 'Inv_Cost_Down', process: 'DE_Inv', editable: true },
+    { Col_Index: 27, title: 'DFM_Sub_Date', process: 'DSUM', editable: true },
+    { Col_Index: 28, title: 'DFM_PAE_Check_Date', process: 'DSUM', editable: true },
+    { Col_Index: 29, title: 'DFM_PE1_Check_Date', process: 'DSUM', editable: true },
+    { Col_Index: 30, title: 'DFM_PE1_App_Date', process: 'DSUM', editable: true },
+    { Col_Index: 31, title: 'DFM_PAE_App_Date', process: 'DSUM', editable: true },
+    { Col_Index: 32, title: 'Core_Cav_Mat', process: 'DSUM', editable: true },
+    { Col_Index: 33, title: 'Slider_Mat', process: 'DSUM', editable: true },
+    { Col_Index: 34, title: 'Lifter_Mat', process: 'DSUM', editable: true },
+    { Col_Index: 35, title: 'Texture', process: 'DSUM', editable: true },
+    { Col_Index: 36, title: 'Hot_Runner', process: 'DSUM', editable: true },
+    { Col_Index: 37, title: 'Gate', process: 'DSUM', editable: true },
+    { Col_Index: 38, title: 'MC_Size', process: 'DSUM', editable: true },
+    { Col_Index: 39, title: 'Die_Make_Location', process: 'DSUM', editable: true },
+    { Col_Index: 40, title: 'Die_Maker', process: 'DSUM', editable: true },
+    { Col_Index: 41, title: 'Family_Die_With', process: 'DSUM', editable: true },
+    { Col_Index: 42, title: 'Common_Part_With', process: 'DSUM', editable: true },
+    { Col_Index: 43, title: 'Special_Die', process: 'DSUM', editable: true },
+    { Col_Index: 44, title: 'DSUM_Idea', process: 'DSUM', editable: true },
+    { Col_Index: 45, title: 'DSUM_Idea_Cost_Down', process: 'DSUM', editable: true },
+    { Col_Index: 46, title: 'MR_Request_Date', process: 'MR_PO', editable: false },
+    { Col_Index: 47, title: 'MR_App_Date', process: 'MR_PO', editable: false },
+    { Col_Index: 48, title: 'PO_Issue_Date', process: 'MR_PO', editable: false },
+    { Col_Index: 49, title: 'PO_App_Date', process: 'MR_PO', editable: false },
+    { Col_Index: 50, title: 'JIG_Using_Status', process: 'JIG', editable: true },
+    { Col_Index: 51, title: 'JIG_No', process: 'JIG', editable: true },
+    { Col_Index: 52, title: 'JIG_Check_Plan', process: 'JIG', editable: true },
+    { Col_Index: 53, title: 'JIG_Check_Result', process: 'JIG', editable: true },
+    { Col_Index: 54, title: 'JIG_ETA_Supplier', process: 'JIG', editable: true },
+    { Col_Index: 55, title: 'JIG_Status', process: 'JIG', editable: true },
+    { Col_Index: 56, title: 'T0_Plan', process: 'T0', editable: true },
+    { Col_Index: 57, title: 'T0_Actual', process: 'T0', editable: true },
+    { Col_Index: 58, title: 'T0_Try_Result', process: 'T0', editable: true },
+    { Col_Index: 59, title: 'T0_Solving_Method', process: 'T0', editable: true },
+    { Col_Index: 60, title: 'T0_Solving_Result', process: 'T0', editable: true },
+    { Col_Index: 61, title: 'Tn_Try_Time', process: 'T(n)', editable: true },
+    { Col_Index: 62, title: 'Tn_Plan', process: 'T(n)', editable: true },
+    { Col_Index: 63, title: 'Tn_Actual', process: 'T(n)', editable: true },
+    { Col_Index: 64, title: 'Tn_Try_Result', process: 'T(n)', editable: true },
+    { Col_Index: 65, title: 'Tn_Solving_Method', process: 'T(n)', editable: true },
+    { Col_Index: 66, title: 'Tn_Solving_Result', process: 'T(n)', editable: true },
+    { Col_Index: 67, title: 'Texture_Meeting_Date', process: 'Texture_S0', editable: true },
+    { Col_Index: 68, title: 'Texture_Go_Date', process: 'Texture_S0', editable: true },
+    { Col_Index: 69, title: 'S0_Plan', process: 'Texture_S0', editable: true },
+    { Col_Index: 70, title: 'S0_Actual', process: 'Texture_S0', editable: true },
+    { Col_Index: 71, title: 'S0_Result', process: 'Texture_S0', editable: true },
+    { Col_Index: 72, title: 'S0_Solving_Method', process: 'Texture_S0', editable: true },
+    { Col_Index: 73, title: 'S0_Solving_Result', process: 'Texture_S0', editable: true },
+    { Col_Index: 74, title: 'Sn_Try_Time', process: 'Texture_S(n)', editable: true },
+    { Col_Index: 75, title: 'Sn_Plan', process: 'Texture_S(n)', editable: true },
+    { Col_Index: 76, title: 'Sn_Actual', process: 'Texture_S(n)', editable: true },
+    { Col_Index: 77, title: 'Sn_Result', process: 'Texture_S(n)', editable: true },
+    { Col_Index: 78, title: 'Sn_Solving_Method', process: 'Texture_S(n)', editable: true },
+    { Col_Index: 79, title: 'Sn_Solving_Result', process: 'Texture_S(n)', editable: true },
+    { Col_Index: 80, title: 'Texture_App_Date', process: 'Texture_App', editable: true },
+    { Col_Index: 81, title: 'Texture_Internal_App_Result', process: 'Texture_App', editable: true },
+    { Col_Index: 82, title: 'Texture_JP_HP_App_Result', process: 'Texture_App', editable: true },
+    { Col_Index: 83, title: 'Texture_Note', process: 'Texture_App', editable: true },
+    { Col_Index: 84, title: 'FA_Sub_Time', process: 'FA_Status', editable: true },
+    { Col_Index: 85, title: 'FA_Plan', process: 'FA_Status', editable: true },
+    { Col_Index: 86, title: 'FA_Actual', process: 'FA_Status', editable: true },
+    { Col_Index: 87, title: 'FA_Result', process: 'FA_Status', editable: true },
+    { Col_Index: 88, title: 'FA_Problem', process: 'FA_Status', editable: true },
+    { Col_Index: 89, title: 'FA_Action_Improve', process: 'FA_Status', editable: true },
+    { Col_Index: 90, title: 'MT1_Date', process: 'MT1', editable: true },
+    { Col_Index: 91, title: 'MT1_Gather_Date', process: 'MT1', editable: true },
+    { Col_Index: 92, title: 'MT1_Problem', process: 'MT1', editable: true },
+    { Col_Index: 93, title: 'MT1_Solve_Method', process: 'MT1', editable: true },
+    { Col_Index: 94, title: 'MT1_Solve_Result', process: 'MT1', editable: true },
+    { Col_Index: 95, title: 'MT1_Remark', process: 'MT1', editable: true },
+    { Col_Index: 96, title: 'MTF_Date', process: 'MTF', editable: true },
+    { Col_Index: 97, title: 'MTF_Gether_Date', process: 'MTF', editable: true },
+    { Col_Index: 98, title: 'MTF_Problem', process: 'MTF', editable: true },
+    { Col_Index: 99, title: 'MTF_Solve_Method', process: 'MTF', editable: true },
+    { Col_Index: 100, title: 'MTF_Solve_Result', process: 'MTF', editable: true },
+    { Col_Index: 101, title: 'MTF_Remark', process: 'MTF', editable: true },
+    { Col_Index: 102, title: 'TVP_Date', process: 'TVP', editable: true },
+    { Col_Index: 103, title: 'TVP_No', process: 'TVP', editable: true },
+    { Col_Index: 104, title: 'TVP_Result', process: 'TVP', editable: true },
+    { Col_Index: 105, title: 'TVP_Remark', process: 'TVP', editable: true },
+    { Col_Index: 106, title: 'PCAR_Date', process: 'FirstLot', editable: true },
+    { Col_Index: 107, title: 'PCAR_Result', process: 'FirstLot', editable: true },
+    { Col_Index: 108, title: 'First_Lost_Date', process: 'FirstLot', editable: true },
+    { Col_Index: 109, title: 'PAE_PIC', process: 'PIC', editable: true },
+    { Col_Index: 110, title: 'PE1_PIC', process: 'PIC', editable: true },
+    { Col_Index: 111, title: 'MQA_PIC', process: 'PIC', editable: true },
+    { Col_Index: 112, title: 'PUR_PIC', process: 'PIC', editable: true },
+    { Col_Index: 113, title: 'PDC_PIC', process: 'PIC', editable: true },
+    { Col_Index: 114, title: 'Latest_Update', process: 'History', editable: false },
+    { Col_Index: 115, title: 'Latest_Update_By', process: 'History', editable: false },
+    { Col_Index: 116, title: 'His_Update', process: 'History', editable: false },
+    { Col_Index: 117, title: 'Issue_Date', process: 'History', editable: false },
+    { Col_Index: 118, title: 'Issue_By', process: 'History', editable: false },
+
 
 ]
 
@@ -211,7 +214,6 @@ var table = $('#myTableEditable').DataTable({
 
     ],
     data: [],
-    // hay config lai khi co su thay doi
     "columns": [
         {
             data: "RecordID", title: "RecordID",
@@ -222,17 +224,16 @@ var table = $('#myTableEditable').DataTable({
                 return data
             }
         },
-        { data: "Phase", title: "Phase" },
-        { data: "Step", title: "Step" },
-        { data: "Rank", title: "Rank" },
-        { data: "Part_No", title: "Part_No" },
-        { data: "Part_Name", title: "Part_Name" },
-        { data: "Process_Code", title: "Process_Code" },
-        { data: "Die_No", title: "Die_No" },
-        { data: "Die_ID", title: "Die_ID" },
-        { data: "Model_Name", title: "Model_Name" },
-        { data: "Supplier", title: "Supplier_Code" },
-        { data: "Supplier", title: "Supplier_Name" },
+        { data: 'Category', title: 'Category' },
+        { data: 'Step', title: 'Step' },
+        { data: 'Rank', title: 'Rank' },
+        { data: 'Part_No', title: 'Part_No' },
+        { data: 'Part_Name', title: 'Part_Name' },
+        { data: 'Process_Code', title: 'Process_Code' },
+        { data: 'Die_No', title: 'Die_No' },
+        { data: 'Die_ID', title: 'Die_ID' },
+        { data: 'Model_Name', title: 'Model_Name' },
+        { data: 'Supplier', title: 'Supplier' },
         {
             data: "Progress", title: "Progress",
             render: function (data, type, row, meta) {
@@ -380,465 +381,115 @@ var table = $('#myTableEditable').DataTable({
             }
 
         },
-        { data: "Decision_Date", title: "Decision_Date" },
-        {
-            data: "Select_Supplier_Date", title: "Select_Supplier_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
+        { data: 'Decision_Date', title: 'Decision_Date' },
+        { data: 'Select_Supplier_Date', title: 'Select_Supplier_Date' },
+        { data: 'QTN_Sub_Date', title: 'QTN_Sub_Date' },
+        { data: 'QTN_App_Date', title: 'QTN_App_Date' },
+        { data: 'Need_Using_Date', title: 'Need_Using_Date' },
+        { data: 'Target_OK_Date', title: 'Target_OK_Date' },
+        { data: 'Inv_Idea', title: 'Inv_Idea' },
+        { data: 'Inv_Feedback_To', title: 'Inv_Feedback_To' },
+        { data: 'Inv_Result', title: 'Inv_Result' },
+        { data: 'Inv_Cost_Down', title: 'Inv_Cost_Down' },
+        { data: 'DFM_Sub_Date', title: 'DFM_Sub_Date' },
+        { data: 'DFM_PAE_Check_Date', title: 'DFM_PAE_Check_Date' },
+        { data: 'DFM_PE1_Check_Date', title: 'DFM_PE1_Check_Date' },
+        { data: 'DFM_PE1_App_Date', title: 'DFM_PE1_App_Date' },
+        { data: 'DFM_PAE_App_Date', title: 'DFM_PAE_App_Date' },
+        { data: 'Core_Cav_Mat', title: 'Core_Cav_Mat' },
+        { data: 'Slider_Mat', title: 'Slider_Mat' },
+        { data: 'Lifter_Mat', title: 'Lifter_Mat' },
+        { data: 'Texture', title: 'Texture' },
+        { data: 'Hot_Runner', title: 'Hot_Runner' },
+        { data: 'Gate', title: 'Gate' },
+        { data: 'MC_Size', title: 'MC_Size' },
+        { data: 'Die_Make_Location', title: 'Die_Make_Location' },
+        { data: 'Die_Maker', title: 'Die_Maker' },
+        { data: 'Family_Die_With', title: 'Family_Die_With' },
+        { data: 'Common_Part_With', title: 'Common_Part_With' },
+        { data: 'Special_Die', title: 'Special_Die' },
+        { data: 'DSUM_Idea', title: 'DSUM_Idea' },
+        { data: 'DSUM_Idea_Cost_Down', title: 'DSUM_Idea_Cost_Down' },
+        { data: 'MR_Request_Date', title: 'MR_Request_Date' },
+        { data: 'MR_App_Date', title: 'MR_App_Date' },
+        { data: 'PO_Issue_Date', title: 'PO_Issue_Date' },
+        { data: 'PO_App_Date', title: 'PO_App_Date' },
+        { data: 'JIG_Using_Status', title: 'JIG_Using_Status' },
+        { data: 'JIG_No', title: 'JIG_No' },
+        { data: 'JIG_Check_Plan', title: 'JIG_Check_Plan' },
+        { data: 'JIG_Check_Result', title: 'JIG_Check_Result' },
+        { data: 'JIG_ETA_Supplier', title: 'JIG_ETA_Supplier' },
+        { data: 'JIG_Status', title: 'JIG_Status' },
+        { data: 'T0_Plan', title: 'T0_Plan' },
+        { data: 'T0_Actual', title: 'T0_Actual' },
+        { data: 'T0_Try_Result', title: 'T0_Try_Result' },
+        { data: 'T0_Solving_Method', title: 'T0_Solving_Method' },
+        { data: 'T0_Solving_Result', title: 'T0_Solving_Result' },
+        { data: 'Tn_Try_Time', title: 'Tn_Try_Time' },
+        { data: 'Tn_Plan', title: 'Tn_Plan' },
+        { data: 'Tn_Actual', title: 'Tn_Actual' },
+        { data: 'Tn_Try_Result', title: 'Tn_Try_Result' },
+        { data: 'Tn_Solving_Method', title: 'Tn_Solving_Method' },
+        { data: 'Tn_Solving_Result', title: 'Tn_Solving_Result' },
+        { data: 'Texture_Meeting_Date', title: 'Texture_Meeting_Date' },
+        { data: 'Texture_Go_Date', title: 'Texture_Go_Date' },
+        { data: 'S0_Plan', title: 'S0_Plan' },
+        { data: 'S0_Actual', title: 'S0_Actual' },
+        { data: 'S0_Result', title: 'S0_Result' },
+        { data: 'S0_Solving_Method', title: 'S0_Solving_Method' },
+        { data: 'S0_Solving_Result', title: 'S0_Solving_Result' },
+        { data: 'Sn_Try_Time', title: 'Sn_Try_Time' },
+        { data: 'Sn_Plan', title: 'Sn_Plan' },
+        { data: 'Sn_Actual', title: 'Sn_Actual' },
+        { data: 'Sn_Result', title: 'Sn_Result' },
+        { data: 'Sn_Solving_Method', title: 'Sn_Solving_Method' },
+        { data: 'Sn_Solving_Result', title: 'Sn_Solving_Result' },
+        { data: 'Texture_App_Date', title: 'Texture_App_Date' },
+        { data: 'Texture_Internal_App_Result', title: 'Texture_Internal_App_Result' },
+        { data: 'Texture_JP_HP_App_Result', title: 'Texture_JP_HP_App_Result' },
+        { data: 'Texture_Note', title: 'Texture_Note' },
+        { data: 'FA_Sub_Time', title: 'FA_Sub_Time' },
+        { data: 'FA_Plan', title: 'FA_Plan' },
+        { data: 'FA_Actual', title: 'FA_Actual' },
+        { data: 'FA_Result', title: 'FA_Result' },
+        { data: 'FA_Problem', title: 'FA_Problem' },
+        { data: 'FA_Action_Improve', title: 'FA_Action_Improve' },
+        { data: 'MT1_Date', title: 'MT1_Date' },
+        { data: 'MT1_Gather_Date', title: 'MT1_Gather_Date' },
+        { data: 'MT1_Problem', title: 'MT1_Problem' },
+        { data: 'MT1_Solve_Method', title: 'MT1_Solve_Method' },
+        { data: 'MT1_Solve_Result', title: 'MT1_Solve_Result' },
+        { data: 'MT1_Remark', title: 'MT1_Remark' },
+        { data: 'MTF_Date', title: 'MTF_Date' },
+        { data: 'MTF_Gether_Date', title: 'MTF_Gether_Date' },
+        { data: 'MTF_Problem', title: 'MTF_Problem' },
+        { data: 'MTF_Solve_Method', title: 'MTF_Solve_Method' },
+        { data: 'MTF_Solve_Result', title: 'MTF_Solve_Result' },
+        { data: 'MTF_Remark', title: 'MTF_Remark' },
+        { data: 'TVP_Date', title: 'TVP_Date' },
+        { data: 'TVP_No', title: 'TVP_No' },
+        { data: 'TVP_Result', title: 'TVP_Result' },
+        { data: 'TVP_Remark', title: 'TVP_Remark' },
+        { data: 'PCAR_Date', title: 'PCAR_Date' },
+        { data: 'PCAR_Result', title: 'PCAR_Result' },
+        { data: 'First_Lost_Date', title: 'First_Lost_Date' },
+        { data: 'PAE_PIC', title: 'PAE_PIC' },
+        { data: 'PE1_PIC', title: 'PE1_PIC' },
+        { data: 'MQA_PIC', title: 'MQA_PIC' },
+        { data: 'PUR_PIC', title: 'PUR_PIC' },
+        { data: 'PDC_PIC', title: 'PDC_PIC' },
+        { data: 'Latest_Update', title: 'Latest_Update' },
+        { data: 'Latest_Update_By', title: 'Latest_Update_By' },
+        { data: 'His_Update', title: 'His_Update' },
+        { data: 'Issue_Date', title: 'Issue_Date' },
+        { data: 'Issue_By', title: 'Issue_By' },
 
-                    return data
-                }
-                return data
-            }
-        },
 
-        {
-            data: "Target_OK_Date", title: "Target_OK_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
 
-                    return data
-                }
-                return data
-            }
-        },
-        { data: "Inv_Idea", title: "Inv_Idea" },
-        { data: "Inv_Feedback_To", title: "Inv_Feedback_To" },
-        { data: "Inv_Result", title: "Inv_Result" },
-        { data: "Inv_Cost_Down", title: "Inv_Cost_Down" },
-        {
-            data: "DSUM_Date", title: "DSUM_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
 
-                    return data
-                }
-                return data
-            }
-        },
-        {
-            data: "DSUM_PE1_Check_Date", title: "DSUM_PE1_Check_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
+    ],
+    // hay config lai khi co su thay doi
 
-                    return data
-                }
-                return data
-            }
-        },
-        {
-            data: "DSUM_PAE_App_Date", title: "DSUM_PAE_App_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        { data: "Core_Cav_Mat", title: "Core_Cav_Mat" },
-        { data: "Slider_Mat", title: "Slider_Mat" },
-        { data: "Lifter_Mat", title: "Lifter_Mat" },
-        { data: "Texture", title: "Texture" },
-        { data: "Hot_Runner", title: "Hot_Runner" },
-        { data: "Gate", title: "Gate" },
-        { data: "MC_Size", title: "MC_Size" },
-        { data: "Die_Make_Location", title: "Die_Make_Location" },
-        { data: "Die_Maker", title: "Die_Maker" },
-        { data: "Family_Die_With", title: "Family_Die_With" },
-        { data: "Common_Part_With", title: "Common_Part_With" },
-        { data: "Special_Die", title: "Special_Die" },
-        { data: "DSUM_Idea", title: "DSUM_Idea" },
-        { data: "DSUM_Idea_Cost_Down", title: "DSUM_Idea_Cost_Down" },
-        {
-            data: "MR_Request_Date", title: "MR_Request_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        {
-            data: "MR_App_Date", title: "MR_App_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        {
-            data: "PO_Issue_Date", title: "PO_Issue_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        {
-            data: "PO_App_Date", title: "PO_App_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        { data: "Jig_Using", title: "Die_Price" },
-        { data: "Jig_Using", title: "Curency" },
-        { data: "Jig_Using", title: "Jig_Using" },
-        { data: "Jig_No", title: "Jig_No" },
-        { data: "Jig_No", title: "Jig_Col_2" },
-        { data: "Jig_No", title: "Jig_Col_3" },
-        { data: "Jig_No", title: "Jig_Col_4" },
-        { data: "Jig_No", title: "Jig_Col_5" },
-        {
-            data: "T0_Plan", title: "T0_Plan",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        {
-            data: "T0_Actual", title: "T0_Actual",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        { data: "T0_Try_Result", title: "T0_Try_Result" },
-        { data: "T0_Solving_Method", title: "T0_Solving_Method" },
-        { data: "T0_Solving_Result", title: "T0_Solving_Result" },
-        { data: "Tn_Try_Time", title: "Tn_Try_Time" },
-        {
-            data: "Tn_Plan", title: "Tn_Plan",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        {
-            data: "Tn_Actual", title: "Tn_Actual",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        { data: "Tn_Try_Result", title: "Tn_Try_Result" },
-        { data: "Tn_Solving_Method", title: "Tn_Solving_Method" },
-        { data: "Tn_Solving_Result", title: "Tn_Solving_Result" },
-        {
-            data: "Texture_Meeting_Date", title: "Texture_Meeting_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        {
-            data: "Texture_Go_Date", title: "Texture_Go_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        {
-            data: "S0_Plan", title: "S0_Plan",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        {
-            data: "S0_Actual", title: "S0_Actual",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        { data: "S0_Result", title: "S0_Result" },
-        { data: "S0_Solving_Method", title: "S0_Solving_Method" },
-        { data: "S0_Solving_Result", title: "S0_Solving_Result" },
-        { data: "Sn_Try_Time", title: "Sn_Try_Time" },
-        {
-            data: "Sn_Plan", title: "Sn_Plan",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        {
-            data: "Sn_Actual", title: "Sn_Actual",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        { data: "Sn_Result", title: "Sn_Result" },
-        { data: "Sn_Solving_Method", title: "Sn_Solving_Method" },
-        { data: "Sn_Solving_Result", title: "Sn_Solving_Result" },
-        {
-            data: "Texture_App_Date", title: "Texture_App_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        { data: "Texture_Internal_App_Result", title: "Texture_Internal_App_Result" },
-        { data: "Texture_JP_HP_App_Result", title: "Texture_JP_HP_App_Result" },
-        { data: "Texture_App_Remark", title: "Texture_App_Remark" },
-        { data: "FA_Sub_Time", title: "FA_Sub_Time" },
-        {
-            data: "FA_Plan", title: "FA_Plan",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        {
-            data: "FA_Actual", title: "FA_Actual",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        { data: "FA_Result", title: "FA_Result" },
-        { data: "FA_Genaral_Inform", title: "FA_Genaral_Inform" },
-        { data: "FA_Problem", title: "FA_Problem" },
-        { data: "Action_Improve", title: "Action_Improve" },
-        {
-            data: "MT1_Date", title: "MT1_Date", render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        {
-            data: "MT1_Gather_Date", title: "MT1_Gather_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        { data: "MT1_Problem", title: "MT1_Problem" },
-        { data: "MT1_Solve_Method", title: "MT1_Solve_Method" },
-        { data: "MT1_Solve_Result", title: "MT1_Solve_Result" },
-        { data: "MT1_Remark", title: "MT1_Remark" },
-        {
-            data: "MTF_Date", title: "MTF_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        {
-            data: "MTF_Gether_Date", title: "MTF_Gether_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        { data: "MTF_Problem", title: "MTF_Problem" },
-        { data: "MTF_Solve_Method", title: "MTF_Solve_Method" },
-        { data: "MTF_Solve_Result", title: "MTF_Solve_Result" },
-        { data: "MTF_Remark", title: "MTF_Remark" },
-        {
-            data: "TVP_Date", title: "TVP_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        { data: "TVP_No", title: "TVP_No" },
-        { data: "TVP_Result", title: "TVP_Result" },
-        { data: "TVP_Remark", title: "TVP_Remark" },
-        {
-            data: "First_Lost_Date", title: "First_Lost_Date",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        { data: "First_Lost_Remark", title: "First_Lost_Remark" },
-        { data: "PAE_PIC", title: "PAE_PIC" },
-        { data: "PE1_PIC", title: "PE1_PIC" },
-        { data: "MQA_PIC", title: "MQA_PIC" },
-        { data: "PUR_PIC", title: "PUR_PIC" },
-        { data: "PDC_PIC", title: "PDC_PIC" },
-        {
-            data: "Latest_Update", title: "Latest_Update",
-            render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        { data: "Latest_Update_By", title: "Latest_Update_By" },
-        { data: "His_Update", title: "His_Update" },
-        {
-            data: "Issue_Date", title: "Issue_Date", render: function (data, type, row, meta) {
-                if (type === 'display' || type === 'filter') {
-                    if (data) {
-                        data = moment(data).format('YYYY-MM-DD')
-                    }
-
-                    return data
-                }
-                return data
-            }
-        },
-        { data: "Issue_By", title: "Issue_By" },
-    ]
 })
 table.columns.adjust();
 
@@ -882,10 +533,41 @@ function getHideColFromLocalStorage() {
 //         })
 //         .then(callback)
 // }
+$('#btn_search').on('click', function(e){
+    renderDataRows()
+})
+$('#form_search').on('keypress', function(e){
+    console.log(e.keyCode)
+    if(e.keyCode == 13){
+        e.preventDefault(); 
+        renderDataRows()
+    }
+})
+
 function getDatafromAPI2(callback) {
+    let search = $('#search').val();
+    let following = $('#following').val();
+    let category = $('#category').val();
+    let FAresult = $('#FAresult').val();
+    let model = $('#model').val();
+    let supplier = $('#supplier').val();
+    let from =  $('#from').val();
+    let to =  $('#to').val();
+    let data = {
+        search : search,
+        following : following,
+        category: category,
+        FAresult : FAresult,
+        model : model,
+        supplier : supplier,
+        from : from,
+        to : to
+    }
+    console.log(data)
     $.ajax({
-        url: "http://localhost:8080/Die_Launching_Control/getRecord",
-        type: 'get',
+        url: "https://localhost:44329/Die_Launching_Control/getRecord",
+        type: 'POST',
+        data : data,
         dataType: 'json',
         success: function (data) {
             callback(data)
@@ -1436,7 +1118,7 @@ TableEditor.isSelection = function (config) {
                         'box-shadow': 'none'
                     })
 
-               
+
             }
 
         }
@@ -1527,14 +1209,12 @@ TableEditor({
 
 
 
-
-
 function select2() {
     $('.jsSelect2').select2({
         width: '100%',
         theme: "classic"
     });
 }
-$(document).ready(function() {
+$(document).ready(function () {
     select2();
-  });
+});
