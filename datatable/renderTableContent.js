@@ -565,7 +565,7 @@ function getDatafromAPI2(callback) {
     }
     console.log(data)
     $.ajax({
-        url: "https://localhost:44329/Die_Launching_Control/getRecord",
+        url: "http://localhost:8080/Die_Launching_Control/getRecord",
         type: 'POST',
         data : data,
         dataType: 'json',

@@ -110,11 +110,11 @@
                     <form id="form_search">
                         <div class="form-row mt-2">
                             <div class="col-md-3 input-placeholder">
-                                <input type="text" id="search" name="search" class="form-control form-control-sm">
+                                <input type="text" id="search" name="search" class="form-control">
                                 <label class="placeholder">Search</label>
                             </div>
                             <div class="col-md-2 input-placeholder">
-                                <select name="following" id="following" class="form-control form-control-sm jsSelect2">
+                                <select name="following" id="following" class="form-control jsSelect2">
                                     <option value="1">Following</option>
                                     <option value="0">Closed</option>
                                     <option value="-1">All</option>
@@ -122,7 +122,8 @@
                                 <label class="placeholder">Following</label>
                             </div>
                             <div class="col-md-3 input-placeholder">
-                                <select name="Category" id="category" class="form-control form-control-sm jsSelect2" multiple = "multiple">
+                                <select name="Category" id="category" class="form-control jsSelect2"
+                                    multiple="multiple">
                                     <option>MT</option>
                                     <option>Additional</option>
                                     <option>Renewal</option>
@@ -131,7 +132,8 @@
                                 <label class="placeholder">Category</label>
                             </div>
                             <div class="col-md-4 input-placeholder">
-                                <select name="FAresult" id="FAresult" class="form-control form-control-sm jsSelect2 " multiple = "multiple">
+                                <select name="FAresult" id="FAresult" class="form-control jsSelect2 "
+                                    multiple="multiple">
                                     <option></option>
                                     <option>OK</option>
                                     <option>RS</option>
@@ -146,20 +148,20 @@
                                 <label class="placeholder">FA Result</label>
                             </div>
 
-                           
+
                         </div>
                         <div class="form-row mt-2">
-                            
+
                             <div class="col-md-2 input-placeholder">
-                                <input type="text" id="from" class="form-control form-control-sm  datepicker">
+                                <input type="text" id="from" class="form-control  datepicker">
                                 <label class="placeholder">From</label>
                             </div>
                             <div class="col-md-2 input-placeholder">
-                                <input type="text" id="to" class="form-control form-control-sm  datepicker">
+                                <input type="text" id="to" class="form-control   datepicker">
                                 <label class="placeholder">To</label>
                             </div>
                             <div class="col-md-4 input-placeholder">
-                                <select name="model" id="model" class="form-control form-control-sm jsSelect2" multiple = "multiple">
+                                <select name="model" id="model" class="form-control  jsSelect2" multiple="multiple">
                                     <option></option>
                                     <option value="1">L1197</option>
                                     <option value="2">L1221</option>
@@ -171,7 +173,8 @@
                                 <label class="placeholder">Model</label>
                             </div>
                             <div class="col-md-4 input-placeholder">
-                                <select name="supplier" id="supplier" class="form-control form-control-sm jsSelect2", multiple = "multiple">
+                                <select name="supplier" id="supplier" class="form-control form-control jsSelect2" ,
+                                    multiple="multiple">
                                     <option></option>
                                     <option value="1">TABT</option>
                                     <option value="2">V008</option>
@@ -185,6 +188,7 @@
                             <div class="col-md-12">
                                 <span id="btn_search" class="btn btn-primary text-center">Search</span>
                                 <span id="showall" class="btn btn-primary">ShowAll</span>
+                                <span id="btn_addnew" class="btn btn-primary">Add New</span>
                             </div>
                         </div>
                     </form>
@@ -200,19 +204,78 @@
                 <tfoot></tfoot>
             </table>
 
-            <!-- Modal -->
-            <div class="modal fade" id="showColumn" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-md" role="document">
+
+            <!-- Modal add new item -->
+            <div class="modal fade" id="modal_addnew" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Show / Hide Collum</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Add New Item</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body" id="renderAreasShowColumn">
+                        <div class="modal-body">
+                            <form id="form_addnew">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Part_No">Part_No</label>
+                                        <input type="text" name="Part_No" class="form-control" id="Part_No"
+                                            placeholder="XXX-XXXX-000">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Part_Name">Part_Name</label>
+                                        <input type="text" name="Part_Name" class="form-control" id="Part_Name">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Part_No">Die_No</label>
+                                        <input type="text" name="Die_No" class="form-control" id="Die_No">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Proces_Code">Proces_Code</label>
+                                        <input type="text" name="Proces_Code" class="form-control" id="Proces_Code"
+                                            placeholder="MO/PX/AL...">
+                                    </div>
 
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Proces_Code">Model</label>
+                                        <select name="Model" class="form-control jsSelect2" id="Model">
+                                            <option></option>
+                                            <option value="1">L1197</option>
+                                            <option value="2">L1221</option>
+                                            <option value="3">T546</option>
+                                            <option value="4">L1199/20</option>
+                                            <option value="5">L1137/38</option>
+                                            <option value="6">L1112/13</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="SupplierID">Supplier</label>
+                                        <select name="SupplierID" class="form-control jsSelect2" id="SupplierID">
+                                            <option></option>
+                                            <option value="1">TABT</option>
+                                            <option value="2">V008</option>
+                                            <option value="3">N547</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Proces_Code">Target_OK_Date</label>
+                                        <input type="date" name="Proces_Code" class="form-control datepicker"
+                                            id="Proces_Code">
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save</button>
                         </div>
                     </div>
                 </div>
@@ -230,7 +293,7 @@
         <!-- Bootstrap 4 -->
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
         <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-       
+
 
         <!-- ChartJS -->
         <script src="plugins/chart.js/Chart.min.js"></script>
@@ -241,17 +304,19 @@
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-       
+
         <!--Datatable plugin-->
         <!-- <script src="./plugins/datatables/datatables.min.js"></script>
         <script src="https://cdn.datatables.net/fixedheader/3.2.2/js/dataTables.fixedHeader.min.js"></script>
         <script src="./plugins/datatables/keyTable.js"></script> -->
         <script src="./DatatableFull/DataTablesFull/datatables.min.js"></script>
         <script src="./renderTableContent.js"></script>
+        <script src="./handleDieLaunching.js"></script>
         <script>
             $(document).ready(function () {
                 $('.jsSelect2').select2({
                     width: '100%',
+                    height: 'calc(2.25rem + 2px)',
                     theme: "classic"
                 });
 
@@ -259,7 +324,7 @@
             });
         </script>
     </div>
-   
+
 
 </body>
 

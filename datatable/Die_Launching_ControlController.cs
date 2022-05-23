@@ -36,10 +36,10 @@ namespace DMS.Controllers
             FAresult = (FAresult ?? new string[] { });
 
             var records = db.Die_Launching_Control.Where(x => x.Active != false).Include(x => x.ModelList).Include(x => x.Supplier).ToList();
-            List<Die_Launching_Control> searchResult = new List<Die_Launching_Control>();
+
             if (!String.IsNullOrEmpty(search))
             {
-                searchResult = records.Where(x => x.Part_No.Contains(search.Trim())).ToList();
+                var searchResult = records.Where(x => x.Part_No.Contains(search.Trim())).ToList();
                 if (searchResult.Count() == 0)
                 {
                     searchResult = records.Where(x => x.Die_ID.Contains(search.Trim())).ToList();
@@ -49,32 +49,32 @@ namespace DMS.Controllers
                     searchResult = records.Where(x => x.Part_Name.Contains(search.Trim())).ToList();
                 }
                 records = searchResult;
-                searchResult.Clear();
             }
             if (model.Length > 0)
             {
+                List<Die_Launching_Control> searchResult = new List<Die_Launching_Control>();
                 foreach (var item in model)
                 {
                     var result = records.Where(x => x.ModelID == Int32.Parse(item)).ToList();
                     searchResult.AddRange(result);
                 }
                 records = searchResult;
-                searchResult.Clear();
             }
 
             if (supplier.Length > 0)
             {
+                List<Die_Launching_Control> searchResult = new List<Die_Launching_Control>();
                 foreach (var item in supplier)
                 {
                     var result = records.Where(x => x.SupplierID == Int32.Parse(item)).ToList();
                     searchResult.AddRange(result);
                 }
                 records = searchResult;
-                searchResult.Clear();
             }
 
             if (category.Length > 0)
             {
+                List<Die_Launching_Control> searchResult = new List<Die_Launching_Control>();
                 foreach (var item in category)
                 {
                     if (item.ToLower().Contains("mt"))
@@ -100,39 +100,33 @@ namespace DMS.Controllers
 
                     }
                 }
-                records= searchResult;
-                searchResult.Clear();
+                records = searchResult;
             }
 
             if (FAresult.Length > 0)
             {
-
+                List<Die_Launching_Control> searchResult = new List<Die_Launching_Control>();
                 foreach (var item in FAresult)
                 {
                     var result = records.Where(x => x.FA_Result == item).ToList();
                     searchResult.AddRange(result);
                 }
                 records = searchResult;
-                searchResult.Clear();
-
             }
 
             if (!String.IsNullOrEmpty(following))
             {
+                List<Die_Launching_Control> searchResult = new List<Die_Launching_Control>();
                 int fl = Int32.Parse(following);
                 switch (fl)
                 {
                     case 1: // isFollowing
                         searchResult = records.Where(x => x.Following != false).ToList();
                         records = searchResult;
-                        searchResult.Clear();
-
                         break;
                     case 0: // isClose
                         searchResult = records.Where(x => x.Following == false).ToList();
                         records = searchResult;
-                        searchResult.Clear();
-
                         break;
                     case -1: // all
 
@@ -141,25 +135,19 @@ namespace DMS.Controllers
             }
             else // luc load page luon chi lay record dang follow
             {
-                searchResult = records.Where(x => x.Following != false).ToList();
+                var searchResult = records.Where(x => x.Following != false).ToList();
                 records = searchResult;
-                searchResult.Clear();
-
             }
 
             if (!String.IsNullOrEmpty(from))
             {
-                searchResult = records.Where(x => x.Issue_Date >= Convert.ToDateTime(from)).ToList();
+                var searchResult = records.Where(x => x.Issue_Date >= Convert.ToDateTime(from)).ToList();
                 records = searchResult;
-                searchResult.Clear();
-
             }
             if (!String.IsNullOrEmpty(to))
             {
-                searchResult = records.Where(x => x.Issue_Date <= Convert.ToDateTime(to)).ToList();
+                var searchResult = records.Where(x => x.Issue_Date <= Convert.ToDateTime(to)).ToList();
                 records = searchResult;
-                searchResult.Clear();
-
             }
 
             var data = records.AsEnumerable().Select(x => new
