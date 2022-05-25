@@ -153,9 +153,9 @@ namespace DMS.Controllers
             var data = records.AsEnumerable().Select(x => new
             {
                 RecordID = x.RecordID,
-                Category = x.Category,
+                Category = isRenewOrAddOrMT(x.Die_No),
                 Step = x.Step,
-                Rank = x.Rank,
+                Rank = showStatus(x),
                 Part_No = x.Part_No,
                 Part_Name = x.Part_Name,
                 Process_Code = x.Process_Code,
@@ -164,7 +164,7 @@ namespace DMS.Controllers
                 Model_Name = x.ModelID != null ? x.ModelList.ModelName : "",
                 Supplier = x.SupplierID != null ? String.Concat(x.Supplier.SupplierCode, "-", x.Supplier.SupplierName) : "",
                 Progress = "", // Để trống
-                Status = "",// Để trống
+                Status = "",
                 Pending_Status = "", // Để trống
                 Dept_Response = "", // Để trống
                 Warning = "", // Để trống
@@ -376,6 +376,90 @@ namespace DMS.Controllers
             }
             return result;
         }
+
+        public string showStatus(Die_Launching_Control x)
+        {
+            var status = "";
+            if (!String.IsNullOrEmpty(x.Target_OK_Date))
+            {
+                var today = DateTime.Now;
+                DateTime OutTarget;
+                var result = DateTime.TryParse(x.Target_OK_Date, out OutTarget);
+                if (result)
+                {
+                    if (x.FA_Result == "OK" || x.FA_Result == "RS") // FA OK
+                    {
+                        if (String.IsNullOrEmpty(x.FA_Actual.ToString())) // Chưa nhập FA Actual Date
+                        {
+                            status = "Lets Input FA Actual Date!";
+                        }
+                        else
+                        {
+                            if (OutTarget > x.FA_Actual)
+                            {
+                                status = "Earlier";
+                            }
+                            else
+                            {
+                                if (OutTarget == x.FA_Actual)
+                                {
+                                    status = "OnTime";
+                                }
+                                else
+                                {
+                                    status = "Late";
+                                }
+                            }
+                        }
+                    }
+                    else // FA Chưa OK
+                    {
+                        if (OutTarget > today.AddDays(10))
+                        {
+                            status = "OnProgress";
+                        }
+                        else
+                        {
+                            if (OutTarget >= today && OutTarget <= today.AddDays(10))
+                            {
+                                status = "Warning(" + OutTarget.Subtract(today).Days + " days)";
+                            }
+                            else
+                            {
+                                status = "Pending(" + today.Subtract(OutTarget).Days + " days)";
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    status = "Invalid Date: Target OK";
+                }
+
+            }
+            else
+            {
+                status = "Let's input target OK";
+            }
+
+            return status;
+        }
+
+        public class Pending
+        {
+            public string Status { get; set; }
+            public string DeptRespone { get; set; }
+            public string Progress { get; set; }
+        }
+
+        public object ShowPending(Die_Launching_Control x)
+        {
+            Pending data = new Pending();
+            
+
+            return data;
+        }
+
 
         protected override void Dispose(bool disposing)
         {
