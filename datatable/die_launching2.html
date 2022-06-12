@@ -189,6 +189,7 @@
                                 <span id="btn_search" class="btn btn-primary text-center">Search</span>
                                 <span id="showall" class="btn btn-primary">ShowAll</span>
                                 <span id="btn_addnew" class="btn btn-primary">Add New</span>
+                                <span id="btn_overall" class="btn btn-primary">Overall</span>
                             </div>
                         </div>
                     </form>
@@ -284,6 +285,215 @@
         </div>
 
 
+        <!--Modal show chart-->
+        <div class="modal fade" id="showChartOverall" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-info">
+                        <h5 class="modal-title" id="exampleModalLabel">Overall Die Launching</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="search_box">
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label for="o_Following">Following</label>
+                                    <select class="form-control o_jsSelect2" id="o_Following">
+                                        <option>--choose--</option>
+                                        <option>2022</option>
+                                        <option>2021</option>
+                                        <option>2020</option>
+                                        <option>2019</option>
+                                        <option>2018</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="o_Year">Year</label>
+                                    <select class="form-control o_jsSelect2" id="o_Year">
+                                        <option>--choose--</option>
+                                        <option>2022</option>
+                                        <option>2021</option>
+                                        <option>2020</option>
+                                        <option>2019</option>
+                                        <option>2018</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="o_Category">Category</label>
+                                    <select class="form-control o_jsSelect2" id="o_Category">
+                                        <option>--choose--</option>
+                                        <option>MT</option>
+                                        <option>Renewal</option>
+                                        <option>Additional</option>
+                                        <option>All</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="o_Model">Model</label>
+                                    <select class="form-control o_jsSelect2" id="o_Model">
+                                        <option>--choose--</option>
+                                        <option>L1197</option>
+                                        <option>L1121</option>
+                                        <option>L1170</option>
+                                        <option>L1237</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="o_Supplier">Supplier</label>
+                                    <select class="form-control o_jsSelect2" id="o_Supplier">
+                                        <option>--choose--</option>
+                                        <option>TABT</option>
+                                        <option>N287</option>
+                                        <option>V008</option>
+                                        <option>N457</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-secondary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Die Making Follow Suppliers</h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="chart">
+                                            <div class="chartjs-size-monitor">
+                                                <div class="chartjs-size-monitor-expand">
+                                                    <div class=""></div>
+                                                </div>
+                                                <div class="chartjs-size-monitor-shrink">
+                                                    <div class=""></div>
+                                                </div>
+                                            </div>
+                                            <canvas id="chartDieMakingBySuppliers"
+                                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 487px;"
+                                                width="487" height="250" class="chartjs-render-monitor"></canvas>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card card-secondary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Area Chart</h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="chart">
+                                            <div class="chartjs-size-monitor">
+                                                <div class="chartjs-size-monitor-expand">
+                                                    <div class=""></div>
+                                                </div>
+                                                <div class="chartjs-size-monitor-shrink">
+                                                    <div class=""></div>
+                                                </div>
+                                            </div>
+                                            <canvas id="areaChart"
+                                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 487px;"
+                                                width="487" height="250" class="chartjs-render-monitor"></canvas>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card card-secondary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Line Chart</h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="chart">
+                                            <div class="chartjs-size-monitor">
+                                                <div class="chartjs-size-monitor-expand">
+                                                    <div class=""></div>
+                                                </div>
+                                                <div class="chartjs-size-monitor-shrink">
+                                                    <div class=""></div>
+                                                </div>
+                                            </div>
+                                            <canvas id="lineChart"
+                                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 487px;"
+                                                width="487" height="250" class="chartjs-render-monitor"></canvas>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-secondary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Die Making Follow Suppliers</h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="chart">
+                                            <div class="chartjs-size-monitor">
+                                                <div class="chartjs-size-monitor-expand">
+                                                    <div class=""></div>
+                                                </div>
+                                                <div class="chartjs-size-monitor-shrink">
+                                                    <div class=""></div>
+                                                </div>
+                                            </div>
+                                            <canvas id="areaChart"
+                                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 487px;"
+                                                width="487" height="250" class="chartjs-render-monitor"></canvas>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- jQuery -->
         <script src="plugins/jquery/jquery.min.js"></script>
@@ -314,7 +524,13 @@
         <script src="./handleDieLaunching.js"></script>
         <script>
             $(document).ready(function () {
-                $('.jsSelect2').select2({
+                $('.jsSelect2, .o_jsSelect2').select2({
+                    width: '100%',
+                    height: 'calc(2.25rem + 2px)',
+                    theme: "classic"
+                });
+
+                $('.o_jsSelect2').select2({
                     width: '100%',
                     height: 'calc(2.25rem + 2px)',
                     theme: "classic"
