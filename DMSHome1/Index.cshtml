@@ -1,0 +1,706 @@
+﻿@model IEnumerable<DMS.Models.DataRenderView>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout -LTE.cshtml";
+}
+
+
+<div class="row detail mb-2">
+    <div class="col-md-1 col-sm-12 detail-title text-wrap text-center" style="font-size: 1.5rem;">
+        Die Lunching
+
+    </div>
+
+    <div class="col-md-3 col-sm-12 detail-box">
+        <div class="row">
+            <div class="chart">
+                <div class="chartjs-size-monitor">
+                    <div class="chartjs-size-monitor-expand">
+                        <div class=""></div>
+                    </div>
+                    <div class="chartjs-size-monitor-shrink">
+                        <div class=""></div>
+                    </div>
+                </div>
+                <div id="drawChart_f_chartResponse">
+                    <canvas id="f_chartResponse"
+                            style="min-height: 150px; height: 150px; max-height: 150px; max-width: 100%; display: block; width: 487px;"
+                            width="487" height="250" class="chartjs-render-monitor"></canvas>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 col-sm-12 detail-search">
+        <form id="form_search">
+            <div class="form-row mt-2">
+                <div class="col-md-3 input-placeholder">
+                    <input type="text" id="search" name="search" class="form-control">
+                    <label class="placeholder">Search</label>
+                </div>
+                <div class="col-md-2 input-placeholder">
+                    <select name="following" id="following" class="form-control">
+                        <option value="Following">Following</option>
+                        <option value="Closed">Closed</option>
+                    </select>
+                    <label class="placeholder">Following</label>
+                </div>
+                <div class="col-md-3 input-placeholder">
+                    <select name="Category" id="category" class="form-control jsSelect2"
+                            multiple="multiple">
+                        <option>MT</option>
+                        <option>Additional</option>
+                        <option>Renewal</option>
+                        <option>Overhaul</option>
+                    </select>
+                    <label class="placeholder">Category</label>
+                </div>
+                <div class="col-md-4 input-placeholder">
+                    <select name="FAresult" id="FAresult" class="form-control jsSelect2 "
+                            multiple="multiple">
+                        <option></option>
+                        <option>OK</option>
+                        <option>RS</option>
+                        <option>NG</option>
+                        <option>NGA</option>
+                        <option>WMT</option>
+                        <option>Wait</option>
+                        <option>MQA</option>
+                        <option>PE1</option>
+
+                    </select>
+                    <label class="placeholder">FA Result</label>
+                </div>
+
+
+            </div>
+            <div class="form-row mt-2">
+
+                <div class="col-md-2 input-placeholder">
+                    <input type="text" id="from" class="form-control  datepicker">
+                    <label class="placeholder">PO From</label>
+                </div>
+                <div class="col-md-2 input-placeholder">
+                    <input type="text" id="to" class="form-control   datepicker">
+                    <label class="placeholder">To</label>
+                </div>
+                <div class="col-md-4 input-placeholder">
+                    <select name="model" id="ModelID" class="form-control  jsSelect2" multiple="multiple">
+                        <option></option>
+                        <option value="1">L1197</option>
+                        <option value="2">L1221</option>
+                        <option value="3">T546</option>
+                        <option value="4">L1199/20</option>
+                        <option value="5">L1137/38</option>
+                        <option value="6">L1112/13</option>
+                    </select>
+                    <label class="placeholder">Model</label>
+                </div>
+                <div class="col-md-4 input-placeholder">
+                    <select name="supplier" id="SupplierID" class="form-control form-control jsSelect2" ,
+                            multiple="multiple">
+                        <option></option>
+                        <option value="1">TABT</option>
+                        <option value="2">V008</option>
+                        <option value="3">N547</option>
+                    </select>
+                    <label class="placeholder">Supplier</label>
+                </div>
+            </div>
+            <div class="form-row mt-2">
+                <!-- //Neu PUC => Paymet, PUS => Price -->
+                <div class="col-md-12">
+                    <span id="btn_search" class="btn btn-primary text-center">Search</span>
+                    <span id="btn_Export" class="btn btn-primary text-center">Export</span>
+                    <span id="showall" class="btn btn-primary">ShowAll</span>
+                    <span id="btn_addnew" class="btn btn-primary">Add New</span>
+                    <span id="btn_overall" class="btn btn-primary">Overall</span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table table-sm table-hover table-striped text-nowrap table-bordered text-center " id="myTable">
+    <thead class="bg-primary">
+        <tr>
+            <th>
+                <label for="selectAll" class="mb-0">Select All</label>
+                <input type="checkbox" id="selectAll" name="selectAll" class="" />
+            </th>
+            <th>Category</th>
+            <th>Part_No</th>
+            <th>Die_No</th>
+            <th>Status</th>
+            <th>Pending_Status</th>
+            <th>Dept_Res</th>
+            <th>Warning</th>
+            <th>Step</th>
+            <th>Rank</th>
+            <th>Die_ID</th>
+            <th>Part_name</th>
+            <th>Process_Code</th>
+            <th>Model_Name</th>
+            <th>Supplier_Name</th>
+            <th>Supplier_Code</th>
+            <th>Texture</th>
+            <th>Decision_Date</th>
+            <th>Select_Supplier_Date</th>
+            <th>QTN_Sub_Date</th>
+            <th>QTN_App_Date</th>
+            <th>Need_Use_Date</th>
+            <th>Target_OK_Date</th>
+            <th>Inv_Idea</th>
+            <th>Inv_FB_To</th>
+            <th>Inv_Result</th>
+            <th>Inv_Cost_Down</th>
+            <th>DFM_Sub_Date</th>
+            <th>DFM_PAE_Check_Date</th>
+            <th>DFM_PE_Check_Date</th>
+            <th>DFM_PE_App_Date</th>
+            <th>DFM_PAE_App_Date</th>
+            <th>Die_Mat</th>
+            <th>Slider_Mat</th>
+            <th>Lifter_Mat</th>
+            <th>Hot_runner</th>
+            <th>Gate</th>
+            <th>MC_Size</th>
+            <th>Cav_Qty</th>
+            <th>Die_Made_Location</th>
+            <th>Die_Maker</th>
+            <th>Family_Die_With</th>
+            <th>Common_Part_With</th>
+            <th>Die_Special</th>
+            <th>DSUM_Idea</th>
+            <th>MR_Request_Date</th>
+            <th>MR_App_Date</th>
+            <th>PO_Issue_Date</th>
+            <th>PO_App_Date</th>
+            <th>Design_Check_Plan</th>
+            <th>Design_Check_Actual</th>
+            <th>Design_Check_Result</th>
+            <th>NoOfPoit_Not_FL_DMF</th>
+            <th>NoOfPoint_Not_FL_Spec</th>
+            <th>NoOfPoint_Kaizen</th>
+            <th>JIG_Using</th>
+            <th>JIG_No</th>
+            <th>JIG_Check_Plan</th>
+            <th>JIG_Check_Result</th>
+            <th>JIG_ETA_Supplier</th>
+            <th>JIG_Status</th>
+            <th>T0_Plan</th>
+            <th>T0_Actual</th>
+            <th>T0_Result</th>
+            <th>T0_Solve_Method</th>
+            <th>T0_Solve_Result</th>
+            <th>Texture_Meeting_Date</th>
+            <th>Texture_Go_Date</th>
+            <th>S0_Plan</th>
+            <th>S0_Result</th>
+            <th>S0_Solve_Method</th>
+            <th>S0_solve_Result</th>
+            <th>Texture_App_Date</th>
+            <th>Texture_Internal_App_Result</th>
+            <th>Texture_JP_HP_App_Result</th>
+            <th>Texture_Note</th>
+            <th>PreKK_Plan</th>
+            <th>PreKK_Actual</th>
+            <th>PreKK_Result</th>
+            <th>FA_Sub_Time</th>
+            <th>FA_Plan</th>
+            <th>FA_Result</th>
+            <th>FA_Result_Date</th>
+            <th>FA_Problem</th>
+            <th>FA_Action_Improve</th>
+            <th>MT1_Date</th>
+            <th>MT1_Gather_Date</th>
+            <th>MT1_Problem</th>
+            <th>MT1_Remark</th>
+            <th>MTF_Date</th>
+            <th>MTF_Gather_Date</th>
+            <th>MTF_Problem</th>
+            <th>MTF_Remark</th>
+            <th>TVP_No</th>
+            <th>ERI_No</th>
+            <th>TVP_Result_Date</th>
+            <th>TVP_Remark</th>
+            <th>PCAR_Date</th>
+            <th>PCAR_Result</th>
+            <th>First_Lot_Date</th>
+            <th>Latest_Update_By</th>
+            <th>Latest_Update_Date</th>
+            <th>His_Update</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+
+</table>
+<link href="~/Content/plugins/DataTables (3)/datatables.min.css" rel="stylesheet" />
+
+@*modal showdetail*@
+<div class="modal fade" id="modalShowDetail" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-center">
+                <h5 class="modal-title ">
+                    INFORMATION OF <span id="s_partNo"> </span> - <span id="s_dieNo"> </span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 pr-0">
+                        <table class="table table-sm table-bordered">
+                            <tr class="bg-success">
+                                <th colspan="2" class="text-nowrap">
+                                    <span class="glyphicon-bold">Progress</span>
+                                </th>
+                                <th colspan="3" class="text-center">
+                                    <progress id="s_progress" flex="1" max="100" value=""></progress>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-nowrap">
+                                    Status
+                                </td>
+                                <td colspan="3" class="text-nowrap text-center" id="Status">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-nowrap">
+                                    Pending
+                                </td>
+                                <td colspan="3" class="text-nowrap text-center" id="Pending_Status">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-nowrap">
+                                    Dept Res.
+                                </td>
+                                <td colspan="3" class="text-nowrap text-center" id="Dept_Responsibility">
+                                </td>
+                            </tr>
+                            <tr class="bg-success">
+                                <th colspan="5" class="text-nowrap">
+                                    Required Update
+                                </th>
+                            </tr>
+                            <tr>
+                                <td colspan="2" id="name1" class="text-nowrap">Name 1</td>
+                                <td colspan="3" id="input1">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" id="name2">Name 1</td>
+                                <td colspan="3" id="input2">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="d-flex justify-content-between">
+                                        <div id="name3" class="d-flex"></div>
+                                        <span class="btn btn-sm btn-primary float-right ml-2"
+                                              id="btn_update">Update</span>
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <div class="col-sm-12 col-md-4 p-0">
+                        <table class="table table-sm table-bordered mb-0" with="100">
+                            <tr class="bg-success">
+                                <th colspan="6" class="text-nowrap ">Warning</th>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <textarea disabled class="form-control" rows="3" id="warning"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <th colspan="3">
+                                    Texture
+                                    <select id="s_Texute">
+                                        <option value="?">?</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </th>
+
+                                <th colspan="3" class="text-nowrap">
+                                    JIG
+                                    <select id="s_JIG">
+                                        <option value="?">?</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </th>
+
+                            </tr>
+                        </table>
+                        <div class="attach d-flex p-2" style="height: 128px; background-color: rgb(235, 241, 176); overflow-y: auto;
+                            overflow-x: auto;">
+                            <table class="table table-sm text-nowrap table-bordered text-center"
+                                   id="renderAttachment">
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4 pl-0">
+                        <table class="table table-sm table-bordered">
+                            <tr class="bg-warning">
+                                <th>Genaral Information</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex">
+                                        <input type="text" class="form-control is-invalid"
+                                               name="Genaral_Information" flex="1" placeholder="Remark">
+                                        <span class="btn btn-primary ml-2" id="btn_save_GenaralInfor">Save</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <textarea disabled class="form-control" rows="8" id="s_GanaralInfor"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <form id="formInput">
+                    <div id="tabs">
+                        <ul>
+                            <li><a href="#tabs-BasicInfo">Basic Info</a></li>
+                            <li><a href="#tabs-Decision">Decision</a></li>
+                            <li><a href="#tabs-DSUM">DSUM</a></li>
+                            <li><a href="#tabs-MR">MR/PO</a></li>
+                            <li><a href="#tabs-Design">Design</a></li>
+                            <li><a href="#tabs-JIG">JIG</a></li>
+                            <li><a href="#tabs-T0">T0</a></li>
+                            <li><a href="#tabs-Prekk">Prekk</a></li>
+                            <li><a href="#tabs-Texture">Texture</a></li>
+                            <li><a href="#tabs-FA">FA Status</a></li>
+                            <li><a href="#tabs-MT">MT</a></li>
+                            <li><a href="#tabs-TVP">TVP/PCAR</a></li>
+                            <li><a href="#tabs-His">His</a></li>
+                        </ul>
+
+                        <div id="tabs-BasicInfo">
+
+                        </div>
+                        <div id="tabs-Decision">
+
+                        </div>
+                        <div id="tabs-DSUM">
+
+                        </div>
+                        <div id="tabs-MR">
+
+                        </div>
+                        <div id="tabs-Design">
+
+                        </div>
+                        <div id="tabs-JIG">
+
+                        </div>
+                        <div id="tabs-T0">
+
+                        </div>
+                        <div id="tabs-Prekk">
+
+                        </div>
+                        <div id="tabs-Texture">
+
+                        </div>
+                        <div id="tabs-FA">
+
+                        </div>
+                        <div id="tabs-MT">
+
+                        </div>
+                        <div id="tabs-TVP">
+
+                        </div>
+                        <div id="tabs-His">
+
+                        </div>
+                    </div>
+                </form>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btn_saveChange">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal show chart-->
+<div class="modal fade" id="showChartOverall" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h5 class="modal-title" id="exampleModalLabel">Overall Die Launching</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="search_box">
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label for="o_Following">Following</label>
+                            <select class="form-control o_jsSelect2" id="o_Following">
+                                <option>--choose--</option>
+                                <option>2022</option>
+                                <option>2021</option>
+                                <option>2020</option>
+                                <option>2019</option>
+                                <option>2018</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="o_Year">Year</label>
+                            <select class="form-control o_jsSelect2" id="o_Year">
+                                <option>--choose--</option>
+                                <option>2022</option>
+                                <option>2021</option>
+                                <option>2020</option>
+                                <option>2019</option>
+                                <option>2018</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="o_Category">Category</label>
+                            <select class="form-control o_jsSelect2" id="o_Category">
+                                <option>--choose--</option>
+                                <option>MT</option>
+                                <option>Renewal</option>
+                                <option>Additional</option>
+                                <option>All</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="o_Model">Model</label>
+                            <select class="form-control o_jsSelect2" id="o_Model">
+                                <option>--choose--</option>
+                                <option>L1197</option>
+                                <option>L1121</option>
+                                <option>L1170</option>
+                                <option>L1237</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="o_Supplier">Supplier</label>
+                            <select class="form-control o_jsSelect2" id="o_Supplier">
+                                <option>--choose--</option>
+                                <option>TABT</option>
+                                <option>N287</option>
+                                <option>V008</option>
+                                <option>N457</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">Die Making Follow Suppliers</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart">
+                                    <div class="chartjs-size-monitor">
+                                        <div class="chartjs-size-monitor-expand">
+                                            <div class=""></div>
+                                        </div>
+                                        <div class="chartjs-size-monitor-shrink">
+                                            <div class=""></div>
+                                        </div>
+                                    </div>
+                                    <canvas id="chartDieMakingBySuppliers"
+                                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 487px;"
+                                            width="487" height="250" class="chartjs-render-monitor"></canvas>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">Area Chart</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart">
+                                    <div class="chartjs-size-monitor">
+                                        <div class="chartjs-size-monitor-expand">
+                                            <div class=""></div>
+                                        </div>
+                                        <div class="chartjs-size-monitor-shrink">
+                                            <div class=""></div>
+                                        </div>
+                                    </div>
+                                    <canvas id="chartPendingStatus"
+                                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 487px;"
+                                            width="487" height="250" class="chartjs-render-monitor"></canvas>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">Line Chart</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart">
+                                    <div class="chartjs-size-monitor">
+                                        <div class="chartjs-size-monitor-expand">
+                                            <div class=""></div>
+                                        </div>
+                                        <div class="chartjs-size-monitor-shrink">
+                                            <div class=""></div>
+                                        </div>
+                                    </div>
+                                    <canvas id="chartDeptResponse"
+                                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 487px;"
+                                            width="487" height="250" class="chartjs-render-monitor"></canvas>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">Die Making Follow Suppliers</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart">
+                                    <div class="chartjs-size-monitor">
+                                        <div class="chartjs-size-monitor-expand">
+                                            <div class=""></div>
+                                        </div>
+                                        <div class="chartjs-size-monitor-shrink">
+                                            <div class=""></div>
+                                        </div>
+                                    </div>
+                                    <canvas id="chartPendingStatus"
+                                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 487px;"
+                                            width="487" height="250" class="chartjs-render-monitor"></canvas>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<link href="~/Content/plugins/chart.js/Chart.min.css" rel="stylesheet" />
+<link href="~/Content/plugins/select2/css/select2.min.css" rel="stylesheet" />
+<link href="~/Content/plugins/toastr/toastr.min.css" rel="stylesheet" />
+<link href="~/Content/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+<link href="~/Content/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+@section scripts{
+    <script src="~/Content/plugins/chart.js/Chart.min.js"></script>
+    <script src="~/Content/plugins/toastr/toastr.min.js"></script>
+    <script src="~/Content/plugins/MomentJS/momentjs.js"></script>
+    <script src="~/Scripts/ovelay/loadingoverlay.min.js"></script>
+    <script src="~/Scripts/DieLaunching/RenderTable.js"></script>
+    <script src="~/Scripts/DieLaunching/handerDieLaunching.js"></script>
+    <script src="~/Content/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/Content/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="~/Content/plugins/select2/js/select2.full.min.js"></script>
+    <script src="~/Scripts/DieLaunching/chartDieLaunching.js"></script>
+    <script>
+        $(function () {
+            $("#tabs").tabs();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.jsSelect2, .o_jsSelect2').select2({
+                width: '100%',
+                height: 'calc(2.25rem + 2px)',
+                theme: "classic"
+            });
+
+            $('.o_jsSelect2').select2({
+                width: '100%',
+                height: 'calc(2.25rem + 2px)',
+                theme: "classic"
+            });
+
+            $(".datepicker").datepicker()
+        });
+    </script>
+}
+
+
+
+
+
+
